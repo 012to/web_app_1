@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: "ニックネーム"
+        email: "Eメール"
+        password: "パスワード"
+        password_confirmation: "パスワードの確認"

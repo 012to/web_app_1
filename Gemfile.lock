@@ -102,6 +102,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.12.0)
+      devise (>= 4.9.0)
+    devise-i18n-views (0.3.7)
     dockerfile-rails (1.6.4)
       rails (>= 3.0.0)
     erubi (1.12.0)
@@ -197,6 +200,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.8)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.4.3)
       actionpack (= 7.0.4.3)
       activesupport (= 7.0.4.3)
@@ -305,6 +311,8 @@ DEPENDENCIES
   capybara
   debug
   devise
+  devise-i18n
+  devise-i18n-views
   dockerfile-rails (>= 1.6)
   font-awesome-sass (~> 5.12.0)
   importmap-rails
@@ -313,6 +321,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4.3)
+  rails-i18n
   rubocop
   rubocop-performance
   rubocop-rails
