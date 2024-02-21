@@ -1,0 +1,22 @@
+ja:
+  devise:
+    failure:
+      invalid: メールアドレスまたはパスワードが正しくありません。
+    sessions:
+      signed_in: ログインに成功しました。
+      signed_out: ログアウトしました。
+    registrations:
+      new:
+        minimum6: "6文字以上で入力してください"
+        sign_up: "新規登録"
+      user:
+        signed_up: "アカウント登録が完了しました。"
+    shared:
+      links:
+        log_in: ログイン
+        sign_up: "登録"
+  errors:
+    messages:
+      not_saved:
+        one: '1件のエラーが発生したため %{resource} は保存されませんでした。'
+        other: '%{count} 件のエラーが発生したため %{resource} は保存されませんでした。'
