@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card-body">
+          <h2 class="card-title"><%= "お問い合わせ" %></h2>
+
+      <%= form_for(@contact, url: confirm_path) do |f| %>
+
+        <div class="form-group">
+          <%= f.label :name, 'お名前*' %>
+          <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, '返信先メールアドレス*' %>
+          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :phone_number, '電話番号*' %>
+          <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :subject, 'お問い合わせ件名*' %>
+          <%= f.select :subject, options_for_select(['サービスに関するお問い合わせ', 'その他']), {}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :message, 'メッセージ*' %>
+          <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit '入力内容確認', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </form>
+</div>
+</div>
+</div>
