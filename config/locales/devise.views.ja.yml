@@ -5,6 +5,8 @@ ja:
     sessions:
       signed_in: ログインに成功しました。
       signed_out: ログアウトしました。
+      new:
+        log_in: "ログイン"
     registrations:
       new:
         minimum6: "6文字以上で入力してください"
@@ -13,8 +15,9 @@ ja:
         signed_up: "アカウント登録が完了しました。"
     shared:
       links:
-        log_in: ログイン
-        sign_up: "登録"
+        log_in: "ログイン"
+        sign_up: "新規登録"
+        forgot_password: "パスワードを忘れた方はこちら"
   errors:
     messages:
       not_saved:
