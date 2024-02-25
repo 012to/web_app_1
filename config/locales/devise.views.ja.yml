@@ -16,7 +16,7 @@ ja:
     shared:
       links:
         log_in: "ログイン"
-        sign_up: "登録"
+        sign_up: "新規登録"
         forgot_password: "パスワードを忘れた方はこちら"
   errors:
     messages:
