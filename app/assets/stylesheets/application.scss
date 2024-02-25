@@ -1,6 +1,5 @@
-@import 'top';
-@import 'registration';
-@import 'sessions';
+@import "common";
+@import 'main/*';
 @import 'bootstrap';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
