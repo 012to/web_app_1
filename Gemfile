@@ -86,3 +86,5 @@ gem 'devise-i18n-views'
 gem 'rails-i18n'
 
 gem "dotenv-rails"
+
+gem 'high_voltage'
