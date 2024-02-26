@@ -7,4 +7,11 @@ Rails.application.routes.draw do
   root  'top#index'
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :contacts, only: [:new, :create]
+  get '/contacts', to: 'contacts#new'
+
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
+  get 'done', to: 'contacts#done', as: 'done'
+
 end
