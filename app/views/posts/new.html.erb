@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card-body">
+        <h2 class="card-title text-center">投稿フォーム</h2>
+        <span>投稿者名：<%= current_user.name %></span>
+        <%= form_for(@post) do |f| %>
+          <div class="form-group mt-3">
+            <div>
+              <%= f.label :title, 'タイトル' %><br>
+              <%= f.text_field :title, autofocus: true, placeholder: @post.title, class: 'form-control mb-3' %>
+            </div>
+            <div>
+              <%= f.label :content, '中身' %><br>
+              <%= f.text_area :content, placeholder: @post.content, class: 'form-control mb-3', rows: 5 %>
+            </div>
+            <div>
+              <%= f.label :tag_name, 'タグ' %><br>
+              <%= f.text_field :tag_name, value: @tag_list, class: 'form-control', placeholder: 'タグを入力してください（カンマ区切り）' %>
+            </div>
+          </div>
+          <div class="text-center">
+            <%= f.submit '投稿', class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
