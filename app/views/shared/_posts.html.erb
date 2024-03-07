@@ -1,0 +1,22 @@
+<!-- shared/_posts.html.erb -->
+
+<div class="row">
+  <% posts.each_slice(3) do |row_posts| %>
+    <div class="col-md-4">
+      <% row_posts.each do |post| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%= post.content %></p>
+            <p class="card-text">
+              <% post.tags.each do |tag| %>
+                <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
+                <span class="badge badge-primary" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

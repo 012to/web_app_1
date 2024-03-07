@@ -1,0 +1,16 @@
+<!-- posts/index.html.erb -->
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+        <div class="card-body">
+          <h2 class="card-title text-center">掲示板</h2>
+          <% if @posts.present? %>
+            <%= render partial: 'shared/posts', locals: { posts: @posts } %>
+          <% else %>
+            <p class="text-center"><%= t('.no_result') %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

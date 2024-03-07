@@ -3,6 +3,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+   def index
+    @posts = Post.all.includes(:user).order('RANDOM()')
+   end
+
   def create
     @post = current_user.posts.build(post_params)
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
