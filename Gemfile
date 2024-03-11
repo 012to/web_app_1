@@ -88,3 +88,4 @@ gem 'rails-i18n'
 gem "dotenv-rails"
 
 gem 'high_voltage'
+gem 'mini_racer'
