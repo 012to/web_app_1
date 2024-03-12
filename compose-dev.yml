@@ -20,6 +20,8 @@ services:
       - db
     ports:
       - '3000:3000'
+    environment:
+      - RAILS_DATABASE_HOST=db
     volumes:
       - .:/myapp
 volumes:
