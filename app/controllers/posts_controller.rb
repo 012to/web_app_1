@@ -3,11 +3,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-   def index
+  def index
     @posts = Post.all.order('RANDOM()')
-   end
+  end
 
-   def show
+  def show
     @post = Post.includes(:user).find(params[:id])
   end
 
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
     if @post.update(post_params)
       @post.save_posts(tag_list)
-      redirect_to posts_path, notice: '投稿が更新されました'
+      redirect_to "/posts/#{@post.id}", notice: '投稿が更新されました'
     else
       flash.now[:danger] = '更新に失敗しました'
       render :edit
