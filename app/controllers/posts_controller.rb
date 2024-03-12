@@ -3,6 +3,14 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+   def index
+    @posts = Post.all.order('RANDOM()')
+   end
+
+   def show
+    @post = Post.includes(:user).find(params[:id])
+  end
+
   def create
     @post = current_user.posts.build(post_params)
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
@@ -36,7 +44,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to '/posts/new'
+    redirect_to '/posts'
   end
 
   private

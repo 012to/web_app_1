@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center"><%= @post.title %></h2>
+          <p class="card-text"><%= @post.content %></p>
+          <p class="card-text"><small class="text-muted">投稿者: <%= @post.user.name %></small></p>
+          <p class="card-text"><small class="text-muted">投稿日: <%= l @post.created_at, format: :long %></small></p>
+          <p class="card-text">
+              <% @post.tags.each do |tag| %>
+                <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
+                <span class="badge badge-primary" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
+              <% end %>
+            </p>
+            <% if current_user == @post.user %>
+  <div class="d-flex justify-content-end">
+    <%= link_to '編集', edit_post_path(@post), class: 'btn btn-primary mr-2' %>
+    <%= link_to "削除する", post_path, data: {turbo_method: :delete, turbo_confirm: '本当に削除しますか？'}, class: 'btn btn-danger' %>
+  </div>
+<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
