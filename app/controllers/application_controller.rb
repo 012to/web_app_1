@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def pages_controller?
     controller_name == 'high_voltage/pages' && action_name == 'show'
   end
+
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path
+  end
 end
