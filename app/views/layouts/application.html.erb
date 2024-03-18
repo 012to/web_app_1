@@ -30,7 +30,6 @@
   <body>
     <% if user_signed_in? %>
       <%= render 'shared/logged_in_header' %>
-      <%= auto_session_timeout_js %>
     <% else %>
       <%= render 'shared/no_login_header' %>
     <% end %>
