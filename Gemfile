@@ -91,6 +91,5 @@ gem 'high_voltage'
 gem 'mini_racer'
 
 gem 'onesignal'
-gem 'httparty'
 gem 'whenever'
-gem 'auto-session-timeout'
+

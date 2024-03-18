@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'done', to: 'contacts#done', as: 'done'
 
-  resources :posts, only: [:new, :create, :edit, :update, :destroy, :index, :show]
+  resources :posts
+  resources :users, only: :show
 end

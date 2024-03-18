@@ -3,10 +3,24 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-main {
-  flex: 1;
+
+a {
+  color: black;
 }
-footer {
+
+a:hover {
+  color: grey;
+  text-decoration: none;
+}
+
+.footer {
   position: sticky;
   top: 100vh;
+  a {
+    color: rgb(62, 62, 62);
+  }
+
+  .container {
+    margin: 20px;
+  }
 }

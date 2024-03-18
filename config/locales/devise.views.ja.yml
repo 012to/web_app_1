@@ -11,6 +11,17 @@ ja:
       new:
         minimum6: "6文字以上で入力してください"
         sign_up: "新規登録"
+      edit:
+        new_password: "新しいパスワード"
+        confirm_new_password: "新しいパスワードの確認"
+        no_change: "※変更しない場合は空白のままにしてください"
+        user_edit: "登録情報の変更"
+        confirm_change: "※情報の変更を確定するために入力してください"
+        update: "変更する"
+        delete_user: "アカウントの削除はこちら"
+        back: "マイページに戻る"
+        delete_confirm: "アカウントを削除する"
+        confirm: "本当に削除してよろしいですか"
       user:
         signed_up: "アカウント登録が完了しました。"
     shared:
