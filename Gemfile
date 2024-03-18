@@ -89,3 +89,7 @@ gem "dotenv-rails"
 
 gem 'high_voltage'
 gem 'mini_racer'
+
+gem 'onesignal'
+gem 'whenever'
+

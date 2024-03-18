@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  auto_session_timeout 10.seconds
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, except: [:show], unless: :pages_controller?
@@ -14,5 +15,9 @@ class ApplicationController < ActionController::Base
 
   def pages_controller?
     controller_name == 'high_voltage/pages' && action_name == 'show'
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path
   end
 end

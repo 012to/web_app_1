@@ -18,5 +18,5 @@ class Post < ApplicationRecord
       post_tag = Tag.find_or_create_by(tag_name: new_name)
       self.tags << post_tag
     end
-end
+  end
 end

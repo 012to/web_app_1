@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
@@ -9,6 +10,15 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:user).find(params[:id])
+  end
+
+  def new
+    @post = Post.new
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:tag_name).join(',')
   end
 
   def create
@@ -23,11 +33,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:tag_name).join(',')
-  end
-
   def update
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
@@ -40,7 +45,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -48,6 +52,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :content)
   end
