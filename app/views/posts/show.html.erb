@@ -3,6 +3,9 @@
     <div class="post-card">
       <h2 class="post-card__title"><%= @post.title %></h2>
         <p class="post-card__text"><%= @post.content %></p>
+        <%= turbo_frame_tag 'like_button' do %>
+        <%= render 'likes/like_button', post: @post, liked: @post.liked_by?(current_user), data: { turbo_frame: "_top" } %>
+        <% end %>
         <p class="post-card__author">投稿者: <%= @post.user.name %></p>
         <p class="post-card__date">投稿日: <%= l @post.created_at, format: :long %></p>
         <p class="post-card__tags">

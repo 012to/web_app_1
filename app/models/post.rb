@@ -1,9 +1,13 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
-  has_many :users, through: :likes
+  has_many :liked_users, through: :likes, source: :user
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+
+  def liked_by?(user)
+    liked_users.include?(user)
+  end
 
   def save_posts(tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?

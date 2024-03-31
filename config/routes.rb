@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post 'contacts/back', to: 'contacts#back', as: 'back'
   get 'done', to: 'contacts#done', as: 'done'
 
-  resources :posts
+  resources :posts do
+    resource :like, only: %i[create destroy]
+  end
   resources :users, only: :show
 end

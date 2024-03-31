@@ -1,0 +1,11 @@
+<turbo-frame id="like_button">
+  <% if liked %>
+    <%= link_to post_like_path(post), data: { "turbo-method": :delete } do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to post_like_path(post), data: { "turbo-method": :post } do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% end %>
+</turbo-frame>
