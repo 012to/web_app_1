@@ -1,6 +1,13 @@
 .body{
   text-align: center;
 }
+
+.back-link {
+  font-size: 13px;
+  color: grey;
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
 .post-card {
   display: inline-block; /* カードを横並びにしないため、blockではなくinline-blockを使用 *//* カード内のテキストを左揃えにする *//* カードの幅を指定 */
   margin: 0 auto;
@@ -8,7 +15,7 @@
   max-width: 550px; /* カードを水平方向に中央揃えにする */
 
   &--frame {
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 20px;
     width: 100%;
     border: 1px solid #ccc;
