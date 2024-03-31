@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   resources :posts do
     resource :like, only: %i[create destroy]
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+  end
 end
