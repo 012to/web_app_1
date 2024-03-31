@@ -1,34 +1,41 @@
 <body class="body">
+  <p class="back-link"><%= link_to '前の画面に戻る', :back, class: 'back-link' %>
+</p>
   <div class="post-card post-card--frame">
     <div class="post-card">
       <h2 class="post-card__title"><%= @post.title %></h2>
-        <p class="post-card__text"><%= @post.content %></p>
-        <p class="post-card__author">投稿者: <%= @post.user.name %></p>
-        <p class="post-card__date">投稿日: <%= l @post.created_at, format: :long %></p>
-        <p class="post-card__tags">
-          <% @post.tags.each do |tag| %>
-            <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
-            <span class="badge badge-primary tag" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
-          <% end %>
-        </p>
+      <p class="post-card__text"><%= @post.content %></p>
+      <% if current_user != @post.user %>
+        <%= turbo_frame_tag 'like_button' do %>
+          <%= render 'likes/like_button', post: @post, liked: @post.liked_by?(current_user), data: { turbo_frame: "_top" } %>
+        <% end %>
+      <% end %>
+      <p class="post-card__author">投稿者: <%= @post.user.name %></p>
+      <p class="post-card__date">投稿日: <%= l @post.created_at, format: :long %></p>
+      <p class="post-card__tags">
+        <% @post.tags.each do |tag| %>
+          <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
+          <span class="badge badge-primary tag" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
+        <% end %>
+      </p>
     </div>
   </div>
-    <% if current_user == @post.user %>
-      <div class="post-card__edit-delete-buttons">
-        <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-primary' %>
-        <%= link_to "削除する", post_path(@post), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
-      </div>
-    <% else %>
-      <p class="post-card__share-buttons">
-        <a class="post-card__share-buttons--twitter" href="http://twitter.com/share?url=http://localhost:3000/posts/<%= @post.id %>&hashtags=モチベの泉" target="_blank" rel="nofollow noopener noreferrer">
-          <i class="fab fa-twitter"></i> Twitterで共有する
-        </a>
-        <a class="post-card__share-buttons--line" href="https://social-plugins.line.me/lineit/share?url=yurukei-career.com" target="_blank" rel="nofollow noopener noreferrer">
-          <i class="fab fa-line"></i> LINEで送る
-        </a>
-        <a class="post-card__share-buttons--facebook" href="http://www.facebook.com/share.php?u=yurukei-career.com" target="_blank" rel="nofollow noopener noreferrer">
-          <i class="fab fa-facebook"></i> Facebookでシェアする
-        </a>
-      </p>
-    <% end %>
+  <% if current_user == @post.user %>
+    <div class="post-card__edit-delete-buttons">
+      <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-primary' %>
+      <%= link_to "削除する", post_path(@post), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+    </div>
+  <% else %>
+    <p class="post-card__share-buttons">
+      <a class="post-card__share-buttons--twitter" href="http://twitter.com/share?url=http://localhost:3000/posts/<%= @post.id %>&hashtags=モチベの泉" target="_blank" rel="nofollow noopener noreferrer">
+        <i class="fab fa-twitter"></i> Twitterで共有する
+      </a>
+      <a class="post-card__share-buttons--line" href="https://social-plugins.line.me/lineit/share?url=yurukei-career.com" target="_blank" rel="nofollow noopener noreferrer">
+        <i class="fab fa-line"></i> LINEで送る
+      </a>
+      <a class="post-card__share-buttons--facebook" href="http://www.facebook.com/share.php?u=yurukei-career.com" target="_blank" rel="nofollow noopener noreferrer">
+        <i class="fab fa-facebook"></i> Facebookでシェアする
+      </a>
+    </p>
+  <% end %>
 </div>
