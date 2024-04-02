@@ -1,0 +1,113 @@
+.posts-new {
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 100px auto;
+  padding-bottom: 20px;
+  background-color: #FAFAFA;
+  position: relative;
+
+  &__username {
+    padding-left: 15px;
+    color: grey;
+  }
+
+  &__title {
+    border-radius: 20px 20px 0 0;
+    background-color: #2ABCA7;
+    color: #FAFAFA;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 1.4em;
+  }
+
+  &__form-control textarea {
+    height: 100px;
+  }
+
+  input[type="text"],
+  textarea {
+    margin: 32px auto 0;
+    display: block;
+    width: 95%;
+    border: none;
+    border-bottom: 2px solid #c6c6c6;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+    background-color: #FAFAFA;
+
+    &::placeholder {
+      color: #c6c6c6;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__card-submit-button {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    input[type="submit"] {
+      background-color: #27acd9;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      display: block;
+      text-decoration: none;
+      width: 150px;
+      padding: 1rem 2rem;
+      font-weight: bold;
+      border-radius: 100vh;
+      border-bottom: 7px solid #0686b2;
+      background: #27acd9;
+      color: #fff;
+      transition: margin-top 0.3s ease, border-bottom 0.3s ease, color 0.3s ease; /* ホバー時のアニメーションを追加 */
+    }
+
+    input[type="submit"]:hover {
+      margin-top: 6px;
+      border-bottom: 1px solid #0686b2;
+    }
+  }
+}
+
+.bg_pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f6f6f6;
+  z-index: -1;
+}
+.Paper_v2 {
+  background-image:
+    repeating-linear-gradient(to bottom,
+      transparent 25px,
+      rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+      transparent 27px,  transparent 51px,
+      rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+      transparent 53px,  transparent 77px,
+      rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+      transparent 79px,  transparent 103px,
+      rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+      transparent 105px,  transparent 129px,
+      rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
+
+    repeating-linear-gradient(to right,
+      transparent 25px,
+      rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
+      transparent 27px,  transparent 51px,
+      rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
+      transparent 53px,  transparent 77px,
+      rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
+      transparent 79px,  transparent 103px,
+      rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
+      transparent 105px,  transparent 129px,
+      rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
+}
