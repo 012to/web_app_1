@@ -33,3 +33,12 @@
 vendor/bundle
 .DS_Store
 /.env
+
+/node_modules
+
+/Procfile.dev
+/package-lock.json
+/yarn.lock
+/yarn-error.log
+
+/app/assets/builds/*

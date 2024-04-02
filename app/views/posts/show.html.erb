@@ -1,6 +1,4 @@
-<body class="body">
-  <p class="back-link"><%= link_to '前の画面に戻る', :back, class: 'back-link' %>
-</p>
+<body class="posts-show">
   <div class="post-card post-card--frame">
     <div class="post-card">
       <h2 class="post-card__title"><%= @post.title %></h2>
@@ -23,7 +21,9 @@
   <% if current_user == @post.user %>
     <div class="post-card__edit-delete-buttons">
       <%= link_to '編集する', edit_post_path(@post), class: 'btn btn-primary' %>
-      <%= link_to "削除する", post_path(@post), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'btn btn-danger' %>
+      <div data-turbo="true">
+      <%= link_to "削除する", post_path(@post), data: { "turbo-method": :delete, "turbo_confirm": "削除しますか？" }, class: 'btn btn-danger' %>
+      </div>
     </div>
   <% else %>
     <p class="post-card__share-buttons">
@@ -38,4 +38,6 @@
       </a>
     </p>
   <% end %>
+    <p class="back-link"><%= link_to '前の画面に戻る', :back, class: 'back-link' %>
+</p>
 </div>

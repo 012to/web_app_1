@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
   end
+
+  get '/roulette', to: 'roulette#show'
 end
