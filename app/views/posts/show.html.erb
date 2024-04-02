@@ -1,6 +1,4 @@
-<body class="body">
-  <p class="back-link"><%= link_to '前の画面に戻る', :back, class: 'back-link' %>
-</p>
+<body class="posts-show">
   <div class="post-card post-card--frame">
     <div class="post-card">
       <h2 class="post-card__title"><%= @post.title %></h2>
@@ -40,4 +38,6 @@
       </a>
     </p>
   <% end %>
+    <p class="back-link"><%= link_to '前の画面に戻る', :back, class: 'back-link' %>
+</p>
 </div>

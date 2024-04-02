@@ -23,5 +23,5 @@ Rails.application.routes.draw do
   resources :users, only: :show do
   end
 
-  get '/home', to: 'home#index'
+  get '/roulette', to: 'roulette#show'
 end

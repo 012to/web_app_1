@@ -7,13 +7,9 @@ Turbo.session.drive = false;
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Hey from './components/Hey';
-const hey = document.getElementById('hey');
-createRoot(hey).render(<Hey/>);
-
 import Hola from "./components/Hola"
 const hola = document.getElementById('hola');
 const holaData = JSON.parse(hola.getAttribute('data'))
 // ブラウザのターミナルでJSONを確認した
 console.log(holaData);
-createRoot(hola).render(<Hola name={holaData.name} />);
+createRoot(hola).render(<Hola name={holaData.name} age={holaData.age}/>);

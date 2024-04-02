@@ -1,0 +1,11 @@
+<body class="posts-show">
+  <% hello = { name: @post.title, age: @post.content } %>
+  <%= content_tag :div, id: "hola", data: hello.to_json do %>
+  <% end %>
+
+  <% if current_user.present? && current_user != @post.user %>
+<%= link_to '投稿をお気に入りする', post_path(@post), class: 'post-link' %>
+  <% end %>
+<br>
+<%= link_to 'トップページに戻る', root_path, class: 'top-link' %>
+</body>
