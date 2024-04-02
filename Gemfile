@@ -93,4 +93,6 @@ gem 'mini_racer'
 gem 'onesignal'
 gem 'whenever', require: false
 
+gem 'jsbundling-rails'
+
 
