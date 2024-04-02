@@ -6,11 +6,14 @@ Turbo.session.drive = false;
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import HelloMessage from './components/App';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+import Hey from './components/Hey';
+const hey = document.getElementById('hey');
+createRoot(hey).render(<Hey/>);
 
-document.addEventListener('DOMContentLoaded', () => {
-  root.render(<HelloMessage name="World" />);
-});
+import Hola from "./components/Hola"
+const hola = document.getElementById('hola');
+const holaData = JSON.parse(hola.getAttribute('data'))
+// ブラウザのターミナルでJSONを確認した
+console.log(holaData);
+createRoot(hola).render(<Hola name={holaData.name} />);

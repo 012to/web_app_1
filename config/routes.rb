@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show do
   end
+
+  get '/home', to: 'home#index'
 end
