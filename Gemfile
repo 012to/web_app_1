@@ -92,3 +92,5 @@ gem 'mini_racer'
 
 gem 'onesignal'
 gem 'whenever', require: false
+
+gem "tailwindcss-rails", "~> 2.3"
