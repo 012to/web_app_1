@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
     if @post.save
       @post.save_posts(tag_list)
-      redirect_to posts_path, notice: '投稿が完了しました'
+      redirect_to user_path(current_user), notice: '投稿が完了しました'
     else
       flash.now[:danger] = '投稿に失敗しました'
       render :new
@@ -32,18 +32,23 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
     if @post.update(post_params)
-      @post.save_posts(tag_list)
-      redirect_to "/posts/#{@post.id}", notice: '投稿が更新されました'
+      if @post.previous_changes.any?  # Check if any attribute has changed
+        @post.save_posts(tag_list)
+        redirect_to user_path(current_user), notice: '投稿が更新されました'
+      else
+        redirect_to user_path(current_user), notice: '編集しませんでした'
+      end
     else
       flash.now[:danger] = '更新に失敗しました'
       render :edit
     end
   end
+  
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: '削除しました'
   end
 
   private
