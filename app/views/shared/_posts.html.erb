@@ -2,7 +2,7 @@
   <% posts.each_slice(3) do |row_posts| %>
     <div class="col-md-4">
       <% row_posts.each do |post| %>
-        <div class="card mb-3">
+        <div class="mb-3 card">
           <%= link_to post_path(post) do %>
           <div class="card-body">
               <h5 class="card-title"><%= post.title %></h5>

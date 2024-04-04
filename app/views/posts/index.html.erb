@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-12">
         <div class="card-body">
-          <h2 class="card-title text-center">掲示板一覧</h2>
+          <h2 class="text-center card-title">掲示板一覧</h2>
           <% if @posts.present? %>
             <%= render partial: 'shared/posts', locals: { posts: @posts } %>
           <% else %>
