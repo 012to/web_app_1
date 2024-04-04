@@ -2,11 +2,11 @@
   <div class="row justify-content-center">
     <div class="col-lg-12">
         <div class="card-body-2">
-          <h2 class="card-title text-center" ref="/users/<%= current_user.id %>">作成した投稿</h2>
+          <h2 class="text-center card-title" ref="/users/<%= current_user.id %>">作成した投稿</h2>
             <%= render partial: 'shared/posts', locals: { posts: @posts } %>
         </div>
                 <div class="card-body">
-          <h2 class="card-title text-center" ref="/users/<%= current_user.id %>">お気に入りした投稿</h2>
+          <h2 class="text-center card-title" ref="/users/<%= current_user.id %>">お気に入りした投稿</h2>
           <%= render partial: 'shared/posts', locals: { posts: @likes_posts } %>
         </div>
         <a href="<%= edit_user_registration_path(current_user) %> class="btn btn-primary"">登録情報の編集</a>
