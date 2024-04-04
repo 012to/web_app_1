@@ -16,15 +16,15 @@ class PostsController < ApplicationController
     @tag_list = @post.tags.pluck(:tag_name).join(',')
   end
 
-  def create
-    @post = current_user.posts.build(post_params)
+  def update
+    @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
-    if @post.save
+    if @post.update(post_params)
       @post.save_posts(tag_list)
-      redirect_to user_path(current_user), notice: '投稿が完了しました'
+      redirect_to "/posts/#{@post.id}", notice: '投稿が更新されました'
     else
-      flash.now[:danger] = '投稿に失敗しました'
-      render :new
+      flash.now[:danger] = '更新に失敗しました'
+      render :edit
     end
   end
 

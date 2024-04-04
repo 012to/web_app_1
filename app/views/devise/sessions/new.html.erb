@@ -1,36 +1,37 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-xs-4">
-        <div class="card-body">
-        <h2 class="card-title text-center"><%= t('.log_in') %></h2>
+<div class="flex justify-center ">
+  <div class="w-full max-w-md p-6 mt-10 bg-white rounded shadow-md">
+    <h2 class="mb-6 text-2xl text-center text-gray-700"><%= t('.log_in') %></h2>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="mb-3">
-            <%= f.label :email, class: "form-label" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "sessions-form-control" %>
-          </div>
-
-          <div class="mb-3">
-            <%= f.label :password, class: "form-label" %><br />
-            <%= f.password_field :password, autocomplete: "current-password", class: "sessions-form-control" %>
-          </div>
-
-          <% if devise_mapping.rememberable? %>
-            <div class="mb-3">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me, class: "form-check-label" %>
-            </div>
-          <% end %>
-
-          <div class="text-center mb-3">
-            <%= f.submit t('.log_in'), class: "btn btn-primary" %>
-          </div>
-        <% end %>
-
-        <div class="text-center">
-          <%= render "devise/shared/links" %>
-        </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
+      <div>
+        <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
       </div>
-    </div>
+
+      <div>
+        <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-center justify-between">
+          <label class="flex items-center text-sm text-gray-600">
+            <%= f.check_box :remember_me, class: "mr-2" %>
+            <%= f.label :remember_me %>
+          </label>
+        </div>
+      <% end %>
+
+      <div class="flex justify-center">
+        <%= f.submit t('.log_in'), class: "cursor-pointer px-4 py-2 text-white bg-indigo-500 rounded hover:bg-indigo-700 focus:outline-none focus:shadow-outline text-lg" %>
+      </div>
+    <% end %>
+    <div class="flex flex-col items-center justify-center mt-6 text-sm text-gray-400 cursor-pointer hover:text-indigo-300">
+    <%= link_to 'パスワードを忘れましたか？', new_password_path(resource_name), class: "text-gray-400 hover:text-indigo-300" %>
+  <div class="mt-2">
+    <%= link_to 'アカウントをお持ちでない方はこちら', new_registration_path(resource_name), class: "text-gray-400 hover:text-indigo-300" %>
+  </div>
+</div>
+
   </div>
 </div>
