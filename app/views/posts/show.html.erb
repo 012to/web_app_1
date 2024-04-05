@@ -1,6 +1,6 @@
 <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
-  <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-2xl font-normal">投稿詳細</h2>
-  <h2 class="mx-6 mt-4 text-4xl font-bold text-gray-800"><%= @post.title %></h2>
+  <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">投稿詳細</h2>
+  <h2 class="mx-6 mt-4 text-4xl font-bold text-gray-700"><%= @post.title %></h2>
   <p class="mx-8 mt-4 text-3xl text-gray-600 h-[150px] overflow-y-auto "><%= @post.content %></p>
 
   <% if current_user != @post.user %>
@@ -23,7 +23,7 @@
   </div>
   <% if current_user == @post.user %>
   <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
-    <%= link_to '編集する', edit_post_path(@post), class: "w-36 py-4 font-bold text-center text-white bg-amber-500 border-0 border-b-8 border-amber-600 rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
+    <%= link_to '編集する', edit_post_path(@post), class: "w-36 py-4 font-sembold text-center text-xl text-white bg-amber-500 border-0 border-b-8 border-amber-600 rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
 </div>
 <% end %>
 </div>

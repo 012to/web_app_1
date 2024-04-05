@@ -19,9 +19,9 @@
           class: "w-full px-0 text-2xl bg-transparent border-t-transparent border-x-transparent border-b-2 border-b-white focus:border-t-transparent focus:border-x-transparent focus:border-b-white focus:ring-0 placeholder-gray-300",
           placeholder: 'カンマで区切って入力してください' %>
     </div>
-    <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
-      <%= f.submit '更新する', class: "w-36 py-4 font-bold text-center text-white bg-[#27acd9] border-0 border-b-8 border-[#0686b2] rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
-      <%= link_to "削除する", post_path(@post), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"}, class: "w-36 py-4 font-bold text-center text-white bg-[#d94227] border-0 border-b-8 border-[#b20606] rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
+    <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4 font-sembold text-center text-xl text-white">
+      <%= f.submit '更新する', class: "w-36 py-4   bg-[#27acd9] border-0 border-b-8 border-[#0686b2] rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
+      <%= link_to "削除する", post_path(@post), data: {turbo_method: :delete, turbo_confirm: "削除しますか？"}, class: "w-36 py-4 bg-[#d94227] border-0 border-b-8 border-[#b20606] rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
     </div>
   <% end %>
 </div>
