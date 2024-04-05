@@ -1,4 +1,5 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
+const { addDynamicIconSelectors } = require('@iconify/tailwind');
 
 module.exports = {
   content: [
@@ -6,12 +7,21 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-    './src/**/*.{html}'
+    './src/**/*.html',
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['ui-sans-serif', 'system-ui', ...defaultTheme.fontFamily.sans],
+        serif: ['ui-serif', 'Georgia'],
+        mono: ['ui-monospace', 'SFMono-Regular'],
+        display: ['Oswald'],
+        body: ['"Open Sans"'],
+        'montserrat': ['Montserrat'],
+        'lato': ['Lato'],
+        'garamond': ['Garamond'],
+        'biz-udpmincho-regular' : ['"BIZ UDPMincho"', 'serif'],
+        'zen-maru-gothic': ['"Zen Maru Gothic"', 'serif']
       },
     },
   },
@@ -20,5 +30,6 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
+    addDynamicIconSelectors(),
   ]
-}
+};
