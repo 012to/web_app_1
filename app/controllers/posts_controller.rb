@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].delete(' ').delete('　').split(',')
     if @post.save
       @post.save_posts(tag_list)
-      redirect_to posts_path, notice: '投稿が完了しました'
+      redirect_to user_path(current_user), notice: '投稿が完了しました'
     else
       flash.now[:danger] = '投稿に失敗しました'
       render :new
