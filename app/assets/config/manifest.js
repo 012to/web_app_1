@@ -5,4 +5,5 @@
 //= link controllers/index.js
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
+//= link controllers/add_to_any_controller.js
 
