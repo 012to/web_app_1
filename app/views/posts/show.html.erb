@@ -21,6 +21,19 @@
       <span class="px-3 py-1 text-sm rounded-full" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
     <% end %>
   </div>
+
+  <div class="flex justify-center gap-2 mt-4">
+    <a href="http://twitter.com/share?url=http://localhost:3000/posts/<%= @post.id %>&hashtags=モチベの泉&hashtags=投稿をシェア" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
+      <i class="fa-brands fa-square-x-twitter" style="font-size: 200%"></i>
+    </a>
+    <a href="https://line.me/R/msg/text/?『モチベの泉』の投稿をシェア%20http://localhost:3000/posts/<%= @post.id %>" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
+      <i class="fab fa-line" style="font-size: 182%"></i>
+    </a>
+    <a href="http://www.facebook.com/share.php?u=http://localhost:3000/posts/<%= @post.id %>" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
+      <i class="fab fa-facebook-square" style="font-size: 200%"></i>
+    </a>
+  </div>
+
   <% if current_user == @post.user %>
   <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
     <%= link_to '編集する', edit_post_path(@post), class: "w-36 py-4 font-sembold text-center text-xl text-white bg-amber-500 border-0 border-b-8 border-amber-600 rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
