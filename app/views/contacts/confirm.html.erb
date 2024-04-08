@@ -1,54 +1,58 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="card-body">
-        <h2 class="card-title"><%= "お問い合わせ内容" %></h2>
-
-        <table class="table">
+<% provide(:title, '入力内容確認') %>
+<div class="container px-4 mx-auto">
+  <div class="flex justify-center">
+    <div class="w-full max-w-lg">
+      <div class="px-8 pt-6 pb-8 mb-4 rounded bg-[fafafa]">
+        <h3 class="text-lg font-bold text-white">お問い合わせ内容の確認</h3>
+      </div>
+      <div class="p-5">
+        <table class="w-full text-left text-gray-500 text-md">
           <tbody>
-            <tr>
-              <td class="text-center" style="width: 30%;" >お名前</td>
-              <td><%= @contact.name %></td>
+            <tr class="border-b">
+              <th class="px-6 py-4 text-right text-gray-900 bg-gray-50">お名前：</th>
+              <td class="px-6 py-4"><%= @contact.name %></td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 text-right text-gray-900 bg-gray-50">メールアドレス：</th>
+              <td class="px-6 py-4"><%= @contact.email %></td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 text-right text-gray-900 bg-gray-50">電話番号：</th>
+              <td class="px-6 py-4"><%= @contact.phone_number %></td>
+            </tr>
+            <tr class="border-b">
+              <th class="px-6 py-4 text-right text-gray-900 bg-gray-50">お問い合わせ件名：</th>
+              <td class="px-6 py-4"><%= @contact.subject %></td>
             </tr>
             <tr>
-              <td class="text-center">メールアドレス</td>
-              <td><%= @contact.email %></td>
-            </tr>
-            <tr>
-              <td class="text-center">電話番号</td>
-              <td><%= @contact.phone_number %></td>
-            </tr>
-            <tr>
-              <td class="text-center">問い合わせ件名</td>
-              <td><%= @contact.subject %></td>
-            </tr>
-            <tr>
-              <td class="text-center">メッセージ</td>
-              <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+              <th class="px-6 py-4 text-right text-gray-900 bg-gray-50">メッセージ：</th>
+              <td class="px-6 py-4 whitespace-pre-wrap"><%= @contact.message %></td>
             </tr>
           </tbody>
         </table>
-
-        <%# 送信フォーム %>
-        <%= form_for(@contact) do |f| %>
-          <%= f.hidden_field :name %>
-          <%= f.hidden_field :email %>
-          <%= f.hidden_field :phone_number %>
-          <%= f.hidden_field :subject %>
-          <%= f.hidden_field :message %>
-          <div><%= f.submit '送信する', class: 'btn btn-primary center mb-1' %></div>
-        <% end %>
-
-        <%# 入力画面に戻るフォーム %>
-        <%= form_for @contact, url: back_path do |f| %>
-          <%= f.hidden_field :name %>
-          <%= f.hidden_field :email %>
-          <%= f.hidden_field :phone_number %>
-          <%= f.hidden_field :subject %>
-          <%= f.hidden_field :message %>
-          <div><%= f.submit '入力画面に戻る', class: 'btn btn-secondary' %></div>
-        <% end %>
       </div>
+      <div class="flex flex-col justify-center px-5 py-4 space-y-3 text-center">
+        <%= form_with model: @contact, url: contacts_path, method: :post, data: {turbo: false}, local: true, class: "w-full" do |f| %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :phone_number %>
+          <%= f.hidden_field :subject %>
+          <%= f.hidden_field :message %>
+        <div class='inline-flex justify-center px-4 py-2 mt-3 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm cursor-pointer hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'>
+          <%= f.submit '送信', class: " cursor-pointer"%>
+        </div>
+        <% end %>
+        <%= form_with model: @contact, url: back_path, method: :post, data: {turbo: false}, local: true, class: "w-full" do |f| %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :phone_number %>
+          <%= f.hidden_field :subject %>
+          <%= f.hidden_field :message %>
+        <div class='inline-flex justify-center px-4 py-2 mt-3 text-sm font-medium text-white bg-gray-500 border border-transparent rounded-md shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'>
+          <%= f.submit '入力画面に戻る', class: " cursor-pointer" %>
+        </div>
+        <% end %>
     </div>
   </div>
+</div>
 </div>

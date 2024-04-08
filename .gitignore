@@ -47,3 +47,4 @@ vendor/bundle
 !/app/assets/builds/.keep
 
 .vscode/settings.json
+.app/mailers/contact_mailer.rb
