@@ -1,12 +1,3 @@
-<% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h1><%= "入力内容にエラーがあります：" %></h1>
-    <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'shared/error_message', post: @post %>
 
 <%= render 'shared/form', post: @post, tag_name: @tag_name %>

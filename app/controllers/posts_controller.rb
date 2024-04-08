@@ -43,22 +43,18 @@ class PostsController < ApplicationController
   def update
     tag_names = params[:tag_name].delete(' ').delete('　').split('、')
     tags = tag_names.map do |tag_name|
-      Tag.find_or_initialize_by(tag_name: tag_name)
+      Tag.find_or_create_by(tag_name: tag_name)
     end
 
     existing_tags = tags.select(&:persisted?)
     new_tags = tags - existing_tags
 
-    if new_tags.any?(&:invalid?)
-      @tag_name = params[:tag_name]
-      new_tags.each do |tag|
-        if tag.invalid?
-          tag.errors.full_messages.each do |message|
-            @post.errors.add(:tags, message)
-          end
-        end
+    tags.each do |tag|
+      if tag.invalid?
+        @tag_name = params[:tag_name]
+        @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
+        return render :new, status: :unprocessable_entity
       end
-      render :edit, status: :unprocessable_entity and return
     end
 
     if @post.update(post_params)
@@ -69,6 +65,11 @@ class PostsController < ApplicationController
       @tag_name = params[:tag_name]
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @post.destroy!
+    redirect_to user_path(current_user), notice: "削除しました", status: :see_other
   end
 
   private
