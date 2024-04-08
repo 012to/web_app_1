@@ -7,4 +7,12 @@ module ApplicationHelper
     else "bg-gray-500"
     end
   end
+  def full_title(page_title = '')
+    base_title = "モチベの泉"
+    if page_title.empty?
+      base_title
+    else
+      "#{ page_title } | #{ base_title }"
+    end
+  end
 end

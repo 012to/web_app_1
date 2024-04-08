@@ -1,5 +1,12 @@
-<div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
-  <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">自分の投稿</h2>
+<% if current_user != @post.user %>
+  <% provide(:title, 'みんなの投稿') %>
+    <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
+    <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">みんなの投稿</h2>
+  <% else %>
+  <% provide(:title, '自分の投稿') %>
+    <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
+    <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">自分の投稿</h2>
+<% end %>
   <h2 class="mx-6 mt-4 text-4xl font-bold text-gray-700"><%= @post.title %></h2>
   <p class="mx-8 mt-4 text-3xl text-gray-600 h-[150px] overflow-y-auto "><%= @post.content %></p>
 
