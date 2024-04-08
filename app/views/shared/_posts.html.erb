@@ -1,22 +1,20 @@
-<div class="row">
-  <% posts.each_slice(3) do |row_posts| %>
-    <div class="col-md-4">
-      <% row_posts.each do |post| %>
-        <div class="mb-3 card">
-          <%= link_to post_path(post) do %>
-          <div class="card-body">
-              <h5 class="card-title"><%= post.title %></h5>
-            <p class="card-text"><%= post.content %></p>
-            <p class="card-text">
-              <% post.tags.each do |tag| %>
-                <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
-                <span class="badge badge-primary" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
-              <% end %>
-            </p>
+<div class="px-4 py-10 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-14">
+  <div class="grid grid-cols-1 gap-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
+    <% posts.each_with_index do |post, index| %>
+      <a href="<%= post_path(post) %>" class="h-[300px] w-full md:max-w-sm mx-auto overflow-hidden transition duration-300 ease-in-out bg-[#fefefe] rounded shadow-lg cursor-pointer hover:bg-[#f0f0f0] animate-swing-in-top-bck ">
+        <div class="flex flex-col justify-between h-full overflow-auto ">
+          <div class="p-4">
+            <div class="p-4 mb-2 text-5xl font-bold text-gray-700 break-all"><%= post.title %></div>
           </div>
-          <% end %>
+          <div class="flex flex-wrap justify-center gap-2 m-8">
+            <% post.tags.each_with_index do |tag, index| %>
+              <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
+              <span class="px-4 py-1 text-white rounded-full",
+                    style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
+            <% end %>
+          </div>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+      </a>
+    <% end %>
+  </div>
 </div>

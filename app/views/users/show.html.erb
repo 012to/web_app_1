@@ -1,15 +1,23 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-lg-12">
-        <div class="card-body-2">
-          <h2 class="text-center card-title" ref="/users/<%= current_user.id %>">作成した投稿</h2>
-            <%= render partial: 'shared/posts', locals: { posts: @posts } %>
-        </div>
-                <div class="card-body">
-          <h2 class="text-center card-title" ref="/users/<%= current_user.id %>">お気に入りした投稿</h2>
-          <%= render partial: 'shared/posts', locals: { posts: @likes_posts } %>
-        </div>
-        <a href="<%= edit_user_registration_path(current_user) %> class="btn btn-primary"">登録情報の編集</a>
-      </div>
+<div class="container mx-auto max-w-[85rem]">
+  <div class="max-w-[85rem] mx-auto px-4 sm:py-20">
+
+    <div class="flex flex-col items-center">
+      <div class="mb-16 text-5xl font-bold text-emerald-700">マイページ</div>
+      <h1 class="text-5xl font-black text-transparent bg-gradient-to-r from-green-500 via-blue-500 to-pink-500 bg-clip-text font-montserrat animate-wobble-hor-bottom">Motivation Booster</h1>
+      <div class="mt-2 text-xl text-gray-600">作成した投稿</div>
+    </div>
+
+    <%= render partial: 'shared/posts', locals: { posts: @posts } %>
+
+    <div class="flex flex-col items-center pt-20">
+      <h1 class="text-5xl font-black text-transparent bg-gradient-to-r from-yellow-500 via-emerald-500 to-indigo-500 bg-clip-text font-montserrat hover:animate-wobble-hor-bottom">Collected</h1>
+      <div class="mt-2 text-xl text-gray-600">♡いいねした投稿</div>
+    </div>
+
+      <%= render partial: 'shared/posts', locals: { posts: @likes_posts } %>
+
+    <div class="mt-10 text-center">
+      <a href="<%= edit_user_registration_path(current_user) %>" class="inline-block px-4 py-2 text-xl text-white bg-blue-500 rounded hover:bg-blue-700">登録情報の編集</a>
     </div>
   </div>
+</div>

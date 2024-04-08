@@ -1,16 +1,23 @@
-<h2>Forgot your password?</h2>
+<div class="flex justify-center">
+  <div class="w-full max-w-md p-6 mt-10 bg-white rounded shadow-md">
+    <div class="mb-6 text-2xl text-center text-gray-700">パスワードを忘れましたか？
+    <p class="mt-4 text-sm text-gray-500">ユーザー登録した時のメールアドレスを<br>入力して送信してください。<br>パスワードを再設定するためのメールが届きます。</p></div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "space-y-6" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div>
+        <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+      </div>
+
+      <div class="flex justify-center">
+        <%= f.submit "送信する", class: "cursor-pointer px-4 py-2 text-white bg-indigo-500 rounded hover:bg-indigo-700 focus:outline-none focus:shadow-outline text-lg" %>
+      </div>
+    <% end %>
+
+    <div class="mt-6 text-sm text-center">
+      <%= link_to "ログインはこちら", new_session_path(resource_name), class: "text-gray-400 hover:text-indigo-300" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -6,3 +6,8 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+/* reloadしないと表示されない（MVP後確認）
+import AddToAnyController from "./add_to_any_controller"
+application.register("add-to-any", AddToAnyController)
+*/
