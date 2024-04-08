@@ -1,40 +1,12 @@
-<div class="relative max-w-lg pb-6 mx-auto my-20 bg-white rounded-lg">
-  <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl text-sembold font-normal">カードを作成しよう</h2>
-    <div class="mt-2 ml-2 text-gray-500 m mypl-4">投稿者名：<%= current_user.name %></div>
-      <%= form_for(@post) do |f| %>
-        <div class="block w-11/12 mx-auto my-2">
-          <%= f.text_field :title,
-              class:"block w-full px-0 py-3 text-4xl bg-transparent border-b-2
-              border-t-transparent border-x-transparent border-b-gray-200
-              focus:border-t-transparent focus:border-x-transparent focus:border-b-gray-200 focus:ring-0
-              placeholder-gray-300 ",
-              placeholder: "タイトル" %>
-        </div>
-
-
-        <div class="block w-11/12 mx-auto my-2">
-          <%= f.text_area :content,
-              class:"block w-full  px-0 py-3 text-3xl bg-transparent border-b-2
-              border-t-transparent border-x-transparent border-b-gray-200
-              focus:border-t-transparent focus:border-x-transparent focus:border-b-gray-200 focus:ring-0
-              placeholder-gray-300 h-500",
-              style: "height: 200px",
-              placeholder: "内容" %>
-        </div>
-
-<div class="block w-11/12 mx-auto ">
-                      <%= f.label :tag_name, 'タグ', class: "text-gray-500" %><br>
-              <%= f.text_field :tag_name, value: @tag_list,
-              class:"block w-full px-0  text-2xl bg-transparent border-b-2
-              border-t-transparent border-x-transparent border-b-white
-              focus:border-t-transparent focus:border-x-transparent focus:border-b-white focus:ring-0
-              placeholder-gray-300 ", placeholder: 'カンマで区切って入力してください' %>
-              
-</div>
-
-      <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2">
-        <%= f.submit '投稿', class: "bg-[#27acd9] border-0 cursor-pointer outline-none block w-36 py-4 font-bold rounded-full border-b-8 border-[#0686b2] text-white hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
-      </div>
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h1><%= "入力内容にエラーがあります：" %></h1>
+    <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
     <% end %>
+    </ul>
   </div>
-</div>
+<% end %>
+
+<%= render 'shared/form', post: @post, tag_name: @tag_name %>

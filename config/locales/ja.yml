@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+      tag: タグ
+    attributes:
+      user:
+        name: 名前
+      post:
+        title: "タイトル"
+        content: "内容"
+        post_tags: "タグ"
+        tags: "タグ"
+      tag:
+        tag_name: "名"
+    errors:
+      messages:
+        invalid: "が重複しています。"
+        blank: "を入力してください。"
+        too_short: "は%{count}文字以上で入力してください。"

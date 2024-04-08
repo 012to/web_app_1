@@ -1,5 +1,5 @@
 <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
-  <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">投稿詳細</h2>
+  <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">自分の投稿</h2>
   <h2 class="mx-6 mt-4 text-4xl font-bold text-gray-700"><%= @post.title %></h2>
   <p class="mx-8 mt-4 text-3xl text-gray-600 h-[150px] overflow-y-auto "><%= @post.content %></p>
 
@@ -15,7 +15,7 @@
     投稿者名：<%= current_user.name %><br/>
     投稿日：<%= l @post.created_at, format: :long %>
   </div>
-  <div class="flex flex-wrap justify-center gap-2 m-8"> <!-- ここで変更を加えました -->
+  <div class="flex flex-wrap justify-center gap-2 m-8"> 
     <% @post.tags.each do |tag| %>
       <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
       <span class="px-3 py-1 text-sm rounded-full" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
@@ -35,12 +35,10 @@
   </div>
 
   <% if current_user == @post.user %>
-  <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
+    <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
     <%= link_to '編集する', edit_post_path(@post), class: "w-36 py-4 font-sembold text-center text-xl text-white bg-amber-500 border-0 border-b-8 border-amber-600 rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
-</div>
-<% end %>
-</div>
+    </div>
+  <% end %>
+  </div>
 
 <p class="pt-4 text-center text-gray-400 hover:underline "><a href="#" onclick="history.go(-1); return false;">前の画面に戻る</a></p>
-
-
