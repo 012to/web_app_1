@@ -13,7 +13,7 @@ ja:
         post_tags: "タグ"
         tags: "タグ"
       tag:
-        tag_name: "名"
+        tag_name: "タグ名"
     errors:
       messages:
         invalid: "が重複しています。"

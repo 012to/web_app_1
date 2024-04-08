@@ -1,16 +1,13 @@
-# fly.toml app configuration file generated for web-app-1-polished-fog-7434-dark-wind-6197 on 2024-03-12T01:52:58+09:00
+# fly.toml app configuration file generated for web-app-1-solitary-bird-4473 on 2024-04-08T14:40:46+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'web-app-1-polished-fog-7434-dark-wind-6197'
+app = 'web-app-1-solitary-bird-4473'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
 [build]
-
-[deploy]
-  release_command = './bin/rails db:prepare'
 
 [http_service]
   internal_port = 3000
@@ -21,10 +18,6 @@ console_command = '/rails/bin/rails console'
   processes = ['app']
 
 [[vm]]
-  cpu_kind = 'shared'
+  cpu_kind = "shared"
   cpus = 1
   memory_mb = 256
-
-[[statics]]
-  guest_path = '/rails/public'
-  url_prefix = '/'

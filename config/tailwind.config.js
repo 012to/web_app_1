@@ -1,5 +1,4 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-const { addDynamicIconSelectors } = require('@iconify/tailwind');
 
 module.exports = {
   content: [
@@ -209,6 +208,5 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-    addDynamicIconSelectors(),
   ]
 };
