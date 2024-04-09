@@ -1,4 +1,3 @@
-=begin
 require 'active_support/all'
 require 'net/http'
 
@@ -33,6 +32,3 @@ class CreateNotification
     return http.request(request)
   end
 end
-=end
-
-
