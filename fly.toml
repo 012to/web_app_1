@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for web-app-1-solitary-bird-4473 on 2024-04-08T14:40:46+09:00
+# fly.toml app configuration file generated for web-app-1-weathered-wind-8377 on 2024-04-09T20:23:39+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'web-app-1-solitary-bird-4473'
+app = 'web-app-1-weathered-wind-8377'
 primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
@@ -18,6 +18,6 @@ console_command = '/rails/bin/rails console'
   processes = ['app']
 
 [[vm]]
-  cpu_kind = "shared"
+  memory = '1gb'
+  cpu_kind = 'shared'
   cpus = 1
-  memory_mb = 256
