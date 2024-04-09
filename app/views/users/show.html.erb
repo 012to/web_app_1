@@ -1,3 +1,4 @@
+<% provide(:title, 'マイページ') %>
 <div class="container mx-auto max-w-[85rem]">
   <div class="max-w-[85rem] mx-auto px-4 sm:py-20">
 
@@ -18,6 +19,7 @@
 
     <div class="mt-10 text-center">
       <a href="<%= edit_user_registration_path(current_user) %>" class="inline-block px-4 py-2 text-xl text-white bg-blue-500 rounded hover:bg-blue-700">登録情報の編集</a>
+      <a href="<%= edit_notification_settings_user_path %>" class="inline-block px-4 py-2 text-xl text-white bg-blue-500 rounded hover:bg-blue-700">通知の設定</a>
     </div>
   </div>
 </div>

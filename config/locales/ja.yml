@@ -12,8 +12,13 @@ ja:
         content: "内容"
         post_tags: "タグ"
         tags: "タグ"
+      contact:
+        name: "名前"
+        email: "メールアドレス"
+        phone_number: "電話番号"
+        message: "問い合わせ内容"
       tag:
-        tag_name: "名"
+        tag_name: "タグ名"
     errors:
       messages:
         invalid: "が重複しています。"

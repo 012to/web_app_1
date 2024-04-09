@@ -1,5 +1,12 @@
-<div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
-  <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">自分の投稿</h2>
+<% if current_user != @post.user %>
+  <% provide(:title, 'みんなの投稿') %>
+    <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
+    <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">みんなの投稿</h2>
+  <% else %>
+  <% provide(:title, '自分の投稿') %>
+    <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
+    <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">自分の投稿</h2>
+<% end %>
   <h2 class="mx-6 mt-4 text-4xl font-bold text-gray-700"><%= @post.title %></h2>
   <p class="mx-8 mt-4 text-3xl text-gray-600 h-[150px] overflow-y-auto "><%= @post.content %></p>
 
@@ -15,7 +22,7 @@
     投稿者名：<%= current_user.name %><br/>
     投稿日：<%= l @post.created_at, format: :long %>
   </div>
-  <div class="flex flex-wrap justify-center gap-2 m-8"> 
+  <div class="flex flex-wrap justify-center gap-2 m-8">
     <% @post.tags.each do |tag| %>
       <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
       <span class="px-3 py-1 text-sm rounded-full" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
@@ -23,13 +30,13 @@
   </div>
 
   <div class="flex justify-center gap-2 mt-4">
-    <a href="http://twitter.com/share?url=http://localhost:3000/posts/<%= @post.id %>&hashtags=モチベの泉&hashtags=投稿をシェア" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
+    <a href="http://twitter.com/share?url=https://web-app-1-solitary-bird-4473.fly.dev/posts/<%= @post.id %>&hashtags=モチベの泉&hashtags=投稿をシェア" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
       <i class="fa-brands fa-square-x-twitter" style="font-size: 200%"></i>
     </a>
-    <a href="https://line.me/R/msg/text/?『モチベの泉』の投稿をシェア%20http://localhost:3000/posts/<%= @post.id %>" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
+    <a href="https://line.me/R/msg/text/?『モチベの泉』の投稿をシェア%20https://web-app-1-solitary-bird-4473.fly.dev/posts/<%= @post.id %>" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
       <i class="fab fa-line" style="font-size: 182%"></i>
     </a>
-    <a href="http://www.facebook.com/share.php?u=http://localhost:3000/posts/<%= @post.id %>" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
+    <a href="http://www.facebook.com/share.php?u=https://web-app-1-solitary-bird-4473.fly.dev/posts/<%= @post.id %>" target="_blank" rel="nofollow noopener noreferrer" class="text-gray-500 hover:text-gray-700">
       <i class="fab fa-facebook-square" style="font-size: 200%"></i>
     </a>
   </div>

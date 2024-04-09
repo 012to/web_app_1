@@ -1,6 +1,7 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import "controllers";
 import "@hotwired/turbo-rails";
-import "./controllers";
+
 
 
 
@@ -25,4 +26,40 @@ function loadAddToAnyScript() {
   window.a2a_config = window.a2a_config || {};
   window.a2a_config.num_services = 4;
 }
+*/
+
+/*
+document.getElementById('notification-toggle').addEventListener('change', function() {
+  if (this.checked) {
+    // 通知をオンにする処理
+    // API経由でサーバーに通知をオンにするリクエストを送信する
+    fetch('/user_settings/update_notification_settings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': '<%= form_authenticity_token %>'
+      },
+      body: JSON.stringify({ notification_enabled: true })
+    })
+    .then(response => {
+      // レスポンスの処理
+    })
+    .catch(error => console.error('Error:', error));
+  } else {
+    // 通知をオフにする処理
+    // API経由でサーバーに通知をオフにするリクエストを送信する
+    fetch('/user_settings/update_notification_settings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': '<%= form_authenticity_token %>'
+      },
+      body: JSON.stringify({ notification_enabled: false })
+    })
+    .then(response => {
+      // レスポンスの処理
+    })
+    .catch(error => console.error('Error:', error));
+  }
+});
 */

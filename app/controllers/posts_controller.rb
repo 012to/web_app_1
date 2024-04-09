@@ -41,29 +41,25 @@ class PostsController < ApplicationController
   end
 
   def update
-    tag_names = params[:tag_name].delete(' ').delete('　').split('、')
-    tags = tag_names.map do |tag_name|
-      Tag.find_or_create_by(tag_name: tag_name)
-    end
+    ActiveRecord::Base.transaction do
+      tag_names = params[:tag_name].split("、")
+      tags = tag_names.map { |tag_name| Tag.find_or_create_by(tag_name: tag_name) }
 
-    existing_tags = tags.select(&:persisted?)
-    new_tags = tags - existing_tags
+      @post.post_tags.clear
 
-    tags.each do |tag|
-      if tag.invalid?
-        @tag_name = params[:tag_name]
-        @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
-        return render :new, status: :unprocessable_entity
+      tags_valid = tags.all? do |tag|
+        post_tag = @post.post_tags.build(tag: tag)
+        tag.valid? && post_tag.valid?
       end
-    end
 
-    if @post.update(post_params)
-      @post.tags = existing_tags
-      @post.tags += new_tags
-      redirect_to user_path(current_user), notice: "投稿が更新されました"
-    else
-      @tag_name = params[:tag_name]
-      render :edit, status: :unprocessable_entity
+      if tags_valid && @post.update(post_params)
+        @post.tags = tags # タグ関連付けの更新を実際に保存します。
+        redirect_to user_path(current_user), notice: "投稿が更新されました"
+      else
+        @tag_name = params[:tag_name] # タグ名の文字列を再設定します。
+        tags.each { |tag| @post.errors.add(:base, "Tag error: #{tag.errors.full_messages.join("\n")}") unless tag.valid? }
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 

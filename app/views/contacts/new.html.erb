@@ -1,34 +1,39 @@
+<%= render 'shared/error_message', post: @contact %>
+<% provide(:title, 'お問い合わせ') %>
 <div class="container px-4 mx-auto">
   <div class="flex justify-center">
     <div class="w-full max-w-lg">
       <div class="px-8 pt-6 pb-8 mb-4 rounded bg-[fafafa]">
-        <h2 class="mb-4 text-xl font-bold"><%= "お問い合わせ" %></h2>
+        <h2 class="mb-4 text-xl font-bold">お問い合わせ</h2>
 
-        <%= form_for(@contact, url: confirm_path, class: "space-y-4") do |f| %>
-
+        <%= form_with model: @contact, url: confirm_path, data: {turbo: false}, html: { class: "space-y-4" } do |f| %>
           <div class="form-group">
             <%= f.label :name, 'お名前*', class: "block text-gray-700 text-sm font-bold mb-2" %>
             <%= f.text_field :name, autofocus: true, class: 'form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm' %>
           </div>
+
           <div class="mt-5 form-group">
             <%= f.label :email, '返信先メールアドレス*', class: "block text-gray-700 text-sm font-bold mb-2" %>
             <%= f.email_field :email, autofocus: true, class: 'form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm' %>
           </div>
-          <div class="mt-5 orm-group">
+
+          <div class="mt-5 form-group">
             <%= f.label :phone_number, '電話番号*', class: "block text-gray-700 text-sm font-bold mb-2" %>
             <%= f.text_field :phone_number, autofocus: true, class: 'form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm' %>
           </div>
+
           <div class="mt-5 form-group">
             <%= f.label :subject, 'お問い合わせ件名*', class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <%= f.select :subject, options_for_select(['サービスに関するお問い合わせ', 'その他']), {}, class: 'block w-full mt-1 border border-gray-300 bg-white rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+            <%= f.select :subject, ['サービスに関するお問い合わせ', 'その他'], {}, { class: 'block w-full mt-1 border border-gray-300 bg-white rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' } %>
           </div>
+
           <div class="mt-5 form-group">
             <%= f.label :message, 'メッセージ*', class: "block text-gray-700 text-sm font-bold mb-2" %>
-            <%= f.text_area :message, size: '10x10', class: 'form-textarea mt-1 block w-full rounded-md border-gray-300 shadow-sm' %>
+            <%= f.text_area :message, class: 'form-textarea mt-1 block w-full rounded-md border-gray-300 shadow-sm', rows: 10 %>
           </div>
 
           <div class="text-center form-group">
-            <%= f.submit '入力内容の確認',class: 'cursor-pointer mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+            <%= f.submit '入力内容の確認', class: 'cursor-pointer mt-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
           </div>
         <% end %>
       </div>
