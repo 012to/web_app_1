@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :send_notification_email_if_enabled
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :likes_posts, through: :likes, source: :post
@@ -22,5 +23,13 @@ class User < ApplicationRecord
 
   def like?(post)
   likes_posts.include?(post)
+  end
+
+  private
+
+  def send_notification_email_if_enabled
+    if enable_notifications?
+      UserMailer.with(user: self).notification_enabled_email.deliver_later
+    end
   end
 end
