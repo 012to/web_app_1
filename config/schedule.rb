@@ -9,6 +9,6 @@ set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 
 
-every 1.day do
+every 5.minutes do
   rake 'send_inactive_notification:send_inactive'
 end

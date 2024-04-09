@@ -1,3 +1,4 @@
+=begin
 require 'active_support/all'
 require 'net/http'
 
@@ -9,8 +10,8 @@ class CreateNotification
     params = {
       app_id: ProductionOneSignalAppId,
       rest_api_key: ProductionSignalRestAPIKey,
-      headings: { en: "Notification test", ja: "通知テスト" },
-      contents: { en: "This is a notification test", ja: "これは通知のテストです。成功おめでとう(^^)" },
+      headings: { en: "Notification test", ja: "モチベの泉" },
+      contents: { en: "This is a notification test", ja: "最終ログインから30日以上経過しました！「モチベの泉」を覗きに来ませんか？" },
       included_segments: ["All"]
     }
     one_signal_web_push(params)
@@ -32,4 +33,6 @@ class CreateNotification
     return http.request(request)
   end
 end
+=end
+
 

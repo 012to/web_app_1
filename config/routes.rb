@@ -18,7 +18,12 @@ Rails.application.routes.draw do
   resources :posts do
     resource :like, only: %i[create destroy]
   end
-  resources :users, only: :show do
+
+  resources :users, only: [:show] do
+    member do
+      get :edit_notification_settings
+      patch :update_notification_settings
+    end
   end
 
   get '/roulette', to: 'roulette#show'
