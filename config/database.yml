@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV['RAILS_DATABASE_HOST'] || 'localhost' %>
+  host: localhost
   username: postgres
   password: password
   pool: 5
