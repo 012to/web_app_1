@@ -1,0 +1,10 @@
+:queues:
+  - default
+
+:scheduler:
+  :enabled: true
+  :dynamic: false
+  :schedule:
+    send_inactive_notification:
+      cron: '*/5 * * * *'  # 5分ごとに実行
+      class: 'SendInactiveNotificationJob'

@@ -94,3 +94,9 @@ gem 'onesignal'
 gem 'whenever', require: false
 
 gem "tailwindcss-rails", "~> 2.3"
+
+gem 'rufus-scheduler'
+
+gem 'sidekiq-scheduler'
+
+gem "redis", "~> 5.1"
