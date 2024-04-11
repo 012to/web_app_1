@@ -14,7 +14,8 @@
             border-t-transparent border-x-transparent border-b-gray-200
             focus:border-t-transparent focus:border-x-transparent focus:border-b-gray-200 focus:ring-0
             placeholder-gray-300",
-            placeholder: "タイトル" %>
+            placeholder: "タイトル",
+            autocomplete: "off" %>
       </div>
 
       <div class="block w-11/12 mx-auto my-2">
@@ -24,12 +25,17 @@
             focus:border-t-transparent focus:border-x-transparent focus:border-b-gray-200 focus:ring-0
             placeholder-gray-300 h-500",
             style: "height: 200px",
-            placeholder: "内容" %>
+            placeholder: "内容",
+            autocomplete: "off" %>
       </div>
 
       <div class="block w-11/12 mx-auto ">
         <%= label_tag :tag_name, 'タグ（「、」区切りで入力してください）', class: "text-gray-500" %><br>
-        <%= text_field_tag :tag_name, @tag_name, class: "block w-full px-0 text-2xl bg-transparent border-b-2 border-t-transparent border-x-transparent border-b-white focus:border-t-transparent focus:border-x-transparent focus:border-b-white focus:ring-0" %>
+        <%= text_field_tag :tag_name, @tag_name,
+            class: "block w-full px-0 text-2xl bg-transparent border-b-2
+            border-t-transparent border-x-transparent border-b-white
+            focus:border-t-transparent focus:border-x-transparent focus:border-b-white focus:ring-0",
+            autocomplete: "off" %>
       </div>
 
     <% if post.persisted? %>
