@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ edit update destroy ]
+  before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.all.order('RANDOM()')
+    @posts = Post.order('RANDOM()')
   end
 
   def show
@@ -24,12 +24,12 @@ class PostsController < ApplicationController
     tags = tag_names.map { |tag_name| Tag.find_or_initialize_by(tag_name: tag_name) }
 
     tags.each do |tag|
-        if tag.invalid?
-          @tag_name = params[:tag_name]
-          @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
-          return render :new, status: :unprocessable_entity
-        end
+      if tag.invalid?
+        @tag_name = params[:tag_name]
+        @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
+        return render :new, status: :unprocessable_entity
       end
+    end
 
     @post.tags = tags
     if @post.save

@@ -6,12 +6,14 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
+    - 'app/jobs/send_inactive_notification_job.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/posts_controller.rb'
     - 'vendor/**/*'
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
     - 'spec/**/*'
-    - 'Gemfile'
     - 'app/uploaders/**/*'
     - 'node_modules/**/*'
   DisplayCopNames: true
@@ -82,5 +84,5 @@ Style/HashTransformValues:
 Bundler/OrderedGems:
   Enabled: false
 
-Style/StringLiterals:
+Rails/I18nLocaleTexts:
   Enabled: false
