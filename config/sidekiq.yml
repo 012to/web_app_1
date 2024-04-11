@@ -6,5 +6,5 @@
   :dynamic: false
   :schedule:
     send_inactive_notification:
-      cron: '*/5 * * * *'  # 5分ごとに実行
+      cron: '0 0 * * 0'
       class: 'SendInactiveNotificationJob'

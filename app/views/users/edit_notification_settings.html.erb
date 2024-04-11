@@ -2,20 +2,16 @@
   <div class="max-w-[85rem] mx-auto px-4 sm:py-20">
     <div class="flex flex-col items-center">
       <%= form_for @user, url: update_notification_settings_user_path(@user), html: { class: "space-y-4" }, data: {turbo: false} do |f| %>
-      <p>ログインから30日以上経過した場合メールでお知らせします。</p>
-      <div class="text-sm text-gray-700">
-        <p>*現在はログインから１分以上経過したユーザーに5分おきにメールを送るように設定しています</p>
-        <p>*MVPリリース後は30日以上経過したユーザーに１週間おきにメールを送るように設定します</p>
-      </div>
-      <div class="field">
-        <%= f.label :enable_notifications, "通知を有効にする", class: "block text-xl font-medium text-gray-700" %>
-      <div class="mt-2">
-        <%= f.check_box :enable_notifications, class: "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %>
-      </div>
-    </div>
-    <div class="actions">
-      <%= f.submit "設定を更新", class: "inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-gray-500 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
-    </div>
+        <p>ログインから30日以上経過した場合メールでお知らせします。</p>
+          <div class="flex text-center flex-col">
+            <%= f.label :enable_notifications, "通知を有効にする", class: "block text-xl font-medium text-gray-700" %>
+              <div class="mt-2">
+                <%= f.check_box :enable_notifications, class: "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %>
+              </div>
+              <div class="actions">
+            <%= f.submit "設定を更新", class: "inline-flex justify-center px-4 py-2 mt-4 text-sm font-medium text-white bg-gray-500 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
