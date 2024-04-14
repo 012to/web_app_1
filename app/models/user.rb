@@ -7,8 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 10 }
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
 
-  class << self   # ここからクラスメソッドで、メソッドの最初につける'self.'を省略できる
-    # SnsCredentialsテーブルにデータがないときの処理
+  class << self
     def without_sns_data(auth)
       user = User.where(email: auth.info.email).first
 
@@ -18,11 +17,11 @@ class User < ApplicationRecord
           provider: auth.provider,
           user_id: user.id
         )
-      else   # User.newの記事があるが、newは保存までは行わないのでcreateで保存をかける
+      else
         user = User.create(
-          name: auth.info.name,    # デフォルトから追加したカラムがあれば記入
-          email: auth.info.email,    # デフォルトから追加したカラム
-          password: Devise.friendly_token(10)   # 10文字の予測不能な文字列を生成する
+          name: auth.info.name,
+          email: auth.info.email,
+          password: Devise.friendly_token(10)
         )
         sns = SnsCredential.create(
           user_id: user.id,
@@ -30,13 +29,11 @@ class User < ApplicationRecord
           provider: auth.provider
         )
       end
-      { user:, sns: }   # ハッシュ形式で呼び出し元に返す
+      { user:, sns: }
     end
 
-    # SnsCredentialsテーブルにデータがあるときの処理
     def with_sns_data(auth, snscredential)
       user = User.where(id: snscredential.user_id).first
-      # 変数userの中身が空文字, 空白文字, false, nilの時の処理
       if user.blank?
         user = User.create(
           name: auth.info.name,
@@ -48,7 +45,6 @@ class User < ApplicationRecord
       { user: }
     end
 
-    # Googleアカウントの情報をそれぞれの変数に格納して上記のメソッドに振り分ける処理
     def find_oauth(auth)
       uid = auth.uid
       provider = auth.provider
