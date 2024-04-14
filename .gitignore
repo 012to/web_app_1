@@ -48,3 +48,4 @@ vendor/bundle
 
 .vscode/settings.json
 .app/mailers/contact_mailer.rb
+/config/credentials/development.key
