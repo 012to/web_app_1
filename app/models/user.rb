@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :likes_posts, through: :likes, source: :post
   has_many :sns_credential, dependent: :destroy
   validates :name, presence: true, length: { maximum: 10 }
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
+          :omniauthable, omniauth_providers: %i[twitter google_oauth2]
 
   class << self
     def without_sns_data(auth)
