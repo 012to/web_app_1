@@ -7,6 +7,14 @@ class Post < ApplicationRecord
   validates :content, length: { in: 3..80 }
   validates :title, presence: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "content"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["tags"]
+  end
+
   def liked_by?(user)
     liked_users.include?(user)
   end

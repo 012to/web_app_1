@@ -2,7 +2,14 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.order('RANDOM()')
+    @q = Post.ransack(params[:q])
+    if params[:q].blank?
+      @posts = Post.order('RANDOM()')
+    else
+      key_words = params[:q][:title_or_tags_tag_name_cont].split(/[\p{blank}\s]+/)
+      grouping_hash = key_words.reduce({}){|hash, word| hash.merge(word => { title_or_tags_tag_name_cont: word })}
+      @posts = Post.ransack({ combinator: 'and', groupings: grouping_hash }).result
+    end
   end
 
   def show
