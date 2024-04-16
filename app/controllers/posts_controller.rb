@@ -1,14 +1,23 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[edit update destroy]
+  before_action :set_post, only: %i[edit update destroy search]
 
   def index
     @q = Post.ransack(params[:q])
     if params[:q].blank?
-      @posts = Post.order('RANDOM()')
+      @posts = Post.includes(:tags).order('RANDOM()')
     else
       key_words = params[:q][:title_or_tags_tag_name_cont].split(/[\p{blank}\s]+/)
-      grouping_hash = key_words.reduce({}){|hash, word| hash.merge(word => { title_or_tags_tag_name_cont: word })}
-      @posts = Post.ransack({ combinator: 'and', groupings: grouping_hash }).result
+      grouping_hash = key_words.reduce({}) do |hash, word|
+        hash.merge(word => { title_or_tags_tag_name_cont: word })
+      end
+      @posts = Post.includes(:tags).ransack({ combinator: 'or', groupings: grouping_hash }).result.distinct
+    end
+  end
+
+  def search
+    @posts = Post.where("title_or_tags_tag_name LIKE ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
     end
   end
 

@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     resource :like, only: %i[create destroy]
   end
 
+  resources :posts do
+    get :search, on: :collection
+  end
+
   resources :users, only: [:show] do
     member do
       get :edit_notification_settings
