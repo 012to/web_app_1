@@ -29,6 +29,47 @@
         </div>
         <div class=" text-[#ddf5fa]  ">
           仲間たちと言葉やアイデアなどをシェアして<br>ポジティブなエネルギーをもらおう！
+
+
+
+
+<div data-controller="hello">
+  <button data-action="click->hello#changeText">テキストを変更</button>
+  <p data-hello-target="output">ここが変わります</p>
+</div>
+
+
+<div data-controller='button'>
+  <button id='1' data-action='click->button#next'>
+    1
+  </button>
+  <button id='2' data-action='click->button#next'>
+    2
+  </button>
+  <button id='3' data-action='click->button#next'>
+    3
+  </button>
+  <button id='4' data-action='click->button#next'>
+    4
+  </button>
+</div>
+
+<div data-controller="notifier">
+  <button type="button" data-action="notifier#notify">click me</button>
+</div>
+
+<div data-controller="counter"
+  data-counter-num-value="0"
+>
+  <p data-counter-target="view">0</p>
+  <button type="button" data-action="click->counter#plus1">+1</button>
+</div>
+
+
+
+
+
+
         </div>
         <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center mt-8 ">
           <a href="/roulette" class="inline-block px-8 py-4 text-xl font-semibold text-white bg-indigo-600 rounded-lg hover:animate-jello-horizontal ">
@@ -52,3 +93,4 @@
     </div>
   </div>
 </div>
+
