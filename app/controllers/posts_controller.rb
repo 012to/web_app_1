@@ -1,8 +1,15 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[edit update destroy search]
+  before_action :set_post, only: %i[edit update destroy]
 
   def index
     @q = Post.ransack(params[:q])
+
+    @top_tags = Tag.joins(:posts)
+    .select('tags.*, COUNT(posts.id) as posts_count')
+    .group('tags.id')
+    .order('posts_count DESC')
+    .limit(5)
+
     if params[:q].blank?
       @posts = Post.includes(:tags).order('RANDOM()')
     else
@@ -15,11 +22,13 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.where("title_or_tags_tag_name LIKE ?", "%#{params[:q]}%")
+    keyword = params[:q]
+    @posts = Post.joins(:tags).where("posts.title LIKE :keyword OR tags.tag_name LIKE :keyword", keyword: "%#{keyword}%").distinct
     respond_to do |format|
       format.js
     end
   end
+
 
   def show
     @post = Post.includes(:user).find(params[:id])

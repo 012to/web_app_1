@@ -2,7 +2,7 @@
 <div class="container mx-auto max-w-[85rem]">
   <div class="max-w-[85rem] mx-auto px-4 sm:py-20">
 
-    <div class="relative mx-auto">
+    <div class="relative mx-auto z-10">
       <div class="absolute top-0 right-0 pl-2">
         <svg class="w-20 h-auto text-orange-500" viewBox="0 0 121 135" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
@@ -21,9 +21,35 @@
   <div class="flex flex-col items-center">
     <h1 class="text-5xl font-semibold text-indigo-600">投稿一覧</h1>
     <p class="mt-4 text-xl text-gray-600 ">モチベの種をみんなでシェアしよう！</p>
-  </div>
+      <%= search_form_for @q, url: posts_path, method: :get, remote: true do |f| %>
+        <div class="relative flex rounded-md mt-8">
+          <div data-controller="autocomplete" data-autocomplete-url-value="/posts/search" role="combobox">
+            <%= f.search_field :title_or_tags_tag_name_cont, data: { autocomplete_target: 'input' }, class: "w-[300px] py-3 px-4 pl-11 block border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 ", placeholder: "タイトルやタグをさがす" %>
+            <%= f.hidden_field :title_or_tags_tag_name, data: { autocomplete_target: 'hidden' } %>
+              <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
+            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4">
+              <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" width="24" height="24" color="#afafaf"><defs><style>.cls-6374f8d9b67f094e4896c660-1{fill:none;stroke:currentColor;stroke-miterlimit:10;}</style></defs>
+              <circle class="cls-6374f8d9b67f094e4896c660-1" cx="9.14" cy="9.14" r="7.64"></circle><line class="cls-6374f8d9b67f094e4896c660-1" x1="22.5" y1="22.5" x2="14.39" y2="14.39"></line></svg></div>
+            </div>
+          <%= f.submit "検索", class: "ml-4 py-3 px-4 inline-flex flex-shrink-0 justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+        </div>
+      <% end %>
+    </div>
 
-    <%= render 'shared/search', q: @q, url: posts_path %>
+  <% if @top_tags.any? %>
+    <div class="flex flex-col items-center my-4">
+      <ul class="flex flex-wrap justify-center gap-3">
+        <% @top_tags.each do |tag| %>
+          <li>
+            <a  class="inline-block bg-gray-400 hover:bg-gray-600 text-white py-2 px-4 rounded-full text-sm transition-colors duration-150">
+              <%= tag.tag_name %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 
     <% if @posts.present? %>
       <%= render partial: 'shared/posts', locals: { posts: @posts } %>

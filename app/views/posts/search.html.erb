@@ -1,0 +1,9 @@
+<ul class="relative z-50 ">
+  <% @posts.each do |post| %>
+    <li class="w-[300px] flex flex-col gap-x-3.5 py-2 px-3 text-sm shadow-md bg-white text-gray-800 hover:bg-blue-200 focus:ring-2 focus:ring-blue-500"
+      role="option" data-autocomplete-value="<%= post.title %>" data-autocomplete-label="<%= post.tags.map(&:tag_name).join(", ") %>">
+      <p><%= post.title %></p>
+      <p>Tags: <%= post.tags.map(&:tag_name).join(", ") %></p>
+    </li>
+  <% end %>
+</ul>

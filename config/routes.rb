@@ -16,13 +16,13 @@ Rails.application.routes.draw do
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
 
-  resources :posts do
+  resources :posts, except: [:show] do
+    get :search, on: :collection
     resource :like, only: %i[create destroy]
   end
 
-  resources :posts do
-    get :search, on: :collection
-  end
+  get 'posts/:id', to: 'posts#show', as: 'post_show'
+
 
   resources :users, only: [:show] do
     member do
