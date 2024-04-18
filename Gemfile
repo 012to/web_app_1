@@ -93,3 +93,4 @@ gem "redis", "~> 5.1"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-twitter"
+gem 'ransack'
