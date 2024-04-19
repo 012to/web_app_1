@@ -7,8 +7,8 @@
     <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
     <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">自分の投稿</h2>
 <% end %>
-  <h2 class="mx-6 mt-4 text-4xl font-bold text-gray-700"><%= @post.title %></h2>
-  <p class="mx-8 mt-4 text-3xl text-gray-600 h-[150px] overflow-y-auto "><%= @post.content %></p>
+  <h2 class="mx-6 my-4 text-4xl  text-gray-700 h-[150px] overflow-y-auto "><%= @post.title %></h2>
+  <p class="mx-8 my-8 text-xl text-gray-600 "><%= @post.content %></p>
 
   <% if current_user != @post.user %>
     <div class="flex justify-end mr-10">
@@ -25,7 +25,7 @@
   <div class="flex flex-wrap justify-center gap-2 m-8">
     <% @post.tags.each do |tag| %>
       <% tag_color = "#" + Digest::MD5.hexdigest(tag.tag_name)[0..5] %>
-      <span class="px-3 py-1 text-sm rounded-full" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
+      <span class="px-3 py-1 text-sm rounded-full text-white" style="background-color: <%= tag_color %>;"><%= tag.tag_name %></span>
     <% end %>
   </div>
 
