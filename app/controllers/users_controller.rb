@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include NotificationHelper
   before_action :set_user, only: %i[edit_notification_settings update_notification_settings]
   def show
     @posts = current_user.posts.order(created_at: :desc)
@@ -8,13 +9,7 @@ class UsersController < ApplicationController
   def edit_notification_settings; end
 
   def update_notification_settings
-    was_enabled = @user.enable_notifications
-    if @user.update(user_params)
-      if !was_enabled && @user.enable_notifications?
-        UserMailer.with(user: @user).notification_enabled_email.deliver_later
-      elsif was_enabled && !@user.enable_notifications?
-        UserMailer.with(user: @user).notification_disabled_email.deliver_later
-      end
+    if update_user_notifications(@user, user_params)
       redirect_to user_path(current_user), notice: '通知設定を更新しました。'
     else
       render :edit_notification_settings
