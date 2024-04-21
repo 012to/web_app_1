@@ -8,8 +8,8 @@ ja:
       user:
         name: 名前
       post:
-        title: "タイトル"
-        content: "内容"
+        title: "投稿内容"
+        content: "説明文"
         post_tags: "タグ"
         tags: "タグ"
       contact:

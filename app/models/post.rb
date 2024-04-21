@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
-  validates :content, length: { in: 3..80 }
   validates :title, presence: true
+  validates :content, length: { maximum: 80 }
 
   def self.ransackable_attributes(auth_object = nil)
     ["title", "content"]
