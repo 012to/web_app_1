@@ -1,7 +1,7 @@
 class PostImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
@@ -25,7 +25,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  # process scale: [200, 300]
+  process resize_to_fit: [1000, 667]
   #
   # def scale(width, height)
   #   # do something
@@ -47,4 +47,16 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg"
   # end
+  process :convert_to_webp
+
+  def convert_to_webp
+    manipulate! do |img|
+      img.format 'webp'
+      img
+    end
+  end
+
+  def filename
+    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+  end
 end
