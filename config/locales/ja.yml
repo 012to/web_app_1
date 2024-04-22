@@ -12,6 +12,7 @@ ja:
         content: "説明文"
         post_tags: "タグ"
         tags: "タグ"
+        post_image: "画像"
       contact:
         name: "名前"
         email: "メールアドレス"
