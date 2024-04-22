@@ -29,7 +29,7 @@
             autocomplete: "off"  %>
       </div>
 
-      <div class="block w-11/12 mx-auto pb-6">
+      <div class="block w-11/12 mx-auto">
         <%= label_tag :tag_name, 'タグ（「、」区切りで入力してください）', class: "text-gray-500" %><br>
         <%= text_field_tag :tag_name, @tag_name,
             class: "block w-full px-0 text-2xl bg-transparent border-b-2
@@ -40,10 +40,13 @@
 
       <div class="block w-11/12 mx-auto pb-6">
         <%= f.label :post_image %>
-        <%= f.file_field :post_image, class: 'form-control mb-3', accept: 'image/*' %>          <%= f.hidden_field :post_image_cache %>
-        <%= image_tag post.post_image.url,
+        <%= f.file_field :post_image, accept: 'image/*' %>
+        <%= f.hidden_field :post_image_cache %>
+          <% if post.post_image.url.present? %>
+            <%= image_tag post.post_image.url,
                 id: 'preview',
                 size: '300x200' %>
+          <% end %>
       </div>
 
     <% if post.persisted? %>

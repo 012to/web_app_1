@@ -7,20 +7,23 @@
     <div class="relative max-w-lg pb-6 m-20 mx-auto bg-white rounded-lg">
     <h2 class="text-center text-[#FAFAFA] bg-[#2ABCA7] rounded-t-lg p-4 text-3xl font-sembold">自分の投稿</h2>
 <% end %>
-  <h2 class="mx-6 my-4 text-4xl  text-gray-700 h-[150px] overflow-y-auto "><%= @post.title %></h2>
-  <p class="mx-8 my-8 text-xl text-gray-600 "><%= @post.content %></p>
+  <h2 class="mx-8 my-4 text-4xl  text-gray-700 "><%= @post.title %></h2>
+  <p class="mx-8 my-4 text-xl text-gray-600 "><%= @post.content %></p>
+  <div class="flex justify-center">
+    <% if @post.post_image.url.present? %>
+      <%= image_tag @post.post_image.url, size: "450x300"%>
+    <% end %>
+  </div>
 
   <% if current_user != @post.user %>
-    <div class="flex justify-end mr-10">
+    <div class="flex justify-end mr-10 mt-4">
       <%= turbo_frame_tag 'like_button' do %>
         <%= render 'likes/like_button', post: @post, liked: @post.liked_by?(current_user) %>
       <% end %>
     </div>
   <% end %>
 
-  <%= image_tag @post.post_image.url, class:'card-img-top', size:'300x200' %>
-
-  <div class="mt-2 ml-6 text-gray-500 m mypl-4">
+  <div class="mt-6 ml-6 text-gray-500 m mypl-4">
     投稿者名：<%= @post.user.name %><br/>
     投稿日：<%= l @post.created_at, format: :long %>
   </div>

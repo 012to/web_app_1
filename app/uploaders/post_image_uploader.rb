@@ -21,7 +21,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url
-    'sample.png'
+    nil
   end
 
   # Process files as they are uploaded:
