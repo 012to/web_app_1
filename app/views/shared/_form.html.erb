@@ -38,6 +38,14 @@
             autocomplete: "off" %>
       </div>
 
+      <div class="block w-11/12 mx-auto pb-6">
+        <%= f.label :post_image %>
+        <%= f.file_field :post_image, class: 'form-control mb-3', accept: 'image/*' %>          <%= f.hidden_field :post_image_cache %>
+        <%= image_tag post.post_image.url,
+                id: 'preview',
+                size: '300x200' %>
+      </div>
+
     <% if post.persisted? %>
       <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
         <%= f.submit '更新する',

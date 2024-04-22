@@ -5,6 +5,7 @@
         <div class="flex flex-col justify-between h-full overflow-auto ">
           <div class="p-4">
             <div class="p-4 mb-2 text-5xl font-bold text-gray-700 break-all"><%= post.title %></div>
+            <%= image_tag post.post_image.url, class:'card-img-top', size:'300x200' %>
           </div>
           <div class="flex flex-wrap justify-center gap-2 m-8">
             <% post.tags.each_with_index do |tag, index| %>

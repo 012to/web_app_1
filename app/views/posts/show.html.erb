@@ -18,6 +18,8 @@
     </div>
   <% end %>
 
+  <%= image_tag @post.post_image.url, class:'card-img-top', size:'300x200' %>
+
   <div class="mt-2 ml-6 text-gray-500 m mypl-4">
     投稿者名：<%= @post.user.name %><br/>
     投稿日：<%= l @post.created_at, format: :long %>
