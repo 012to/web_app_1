@@ -32,6 +32,13 @@ export default class extends Controller {
     }
   }
 
+  previewImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+      this.readAndPreviewImage(file);
+    }
+  }
+
   readAndPreviewImage(file) {
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader()
