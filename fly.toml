@@ -22,4 +22,4 @@ console_command = '/rails/bin/rails console'
   processes = ['app']
 
 [[vm]]
-  size = 'shared-cpu-1x'
+  size = 'shared-cpu-2x'

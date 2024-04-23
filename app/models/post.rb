@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   validates :title, presence: true
   validates :content, length: { maximum: 80 }
+  validate :validate_image_size
 
   def self.ransackable_attributes(auth_object = nil)
     ["title", "content"]
@@ -32,6 +33,14 @@ class Post < ApplicationRecord
     new_tags.each do |new_name|
       post_tag = Tag.find_or_create_by(tag_name: new_name)
       self.tags << post_tag
+    end
+  end
+
+  private
+
+  def validate_image_size
+    if post_image.size > 0.5.megabytes
+      errors.add(:post_image, I18n.t('errors.messages.max_size_error', max_size: '500KB'))
     end
   end
 end

@@ -96,3 +96,4 @@ gem "omniauth-twitter"
 gem 'ransack'
 gem 'fog-aws'
 gem 'carrierwave'
+gem 'mini_magick'

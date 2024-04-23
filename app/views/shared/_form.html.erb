@@ -29,7 +29,7 @@
             autocomplete: "off"  %>
       </div>
 
-      <div class="block w-11/12 mx-auto pb-6">
+      <div class="block w-11/12 mx-auto">
         <%= label_tag :tag_name, 'タグ（「、」区切りで入力してください）', class: "text-gray-500" %><br>
         <%= text_field_tag :tag_name, @tag_name,
             class: "block w-full px-0 text-2xl bg-transparent border-b-2
@@ -38,27 +38,42 @@
             autocomplete: "off" %>
       </div>
 
-      <div class="block w-11/12 mx-auto pb-6">
+      <div class="block w-11/12 mx-auto pb-6 text-sm text-gray-500" data-controller="image-preview">
         <%= f.label :post_image %>
-        <%= f.file_field :post_image, class: 'form-control mb-3', accept: 'image/*' %>          <%= f.hidden_field :post_image_cache %>
-        <%= image_tag post.post_image.url,
-                id: 'preview',
-                size: '300x200' %>
+        <%= f.file_field :post_image, accept: 'image/*',
+            data: { image_preview_target: "input",
+            image_url: (post.post_image.url if post.post_image?),
+            action: "change->image-preview#previewImage" }  %>
+        <%= f.hidden_field :post_image_cache %>
+        <div id="dropzone" data-action="dragover->image-preview#dragover dragleave->image-preview#dragleave drop->image-preview#dropImages"
+            class="py-8 mt-2 bg-gray-200 text-center cursor-pointer text-sm border-dotted border-2 border-gray-400 text-gray-500">
+            またはドラッグ＆ドロップで画像を追加・変更
+            <div class="image-container" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+              <img id="preview" data-image-preview-target="preview" style="display: none; height: 200px; max-width: 100%;">
+            </div>
+        </div>
       </div>
 
     <% if post.persisted? %>
       <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
         <%= f.submit '更新する',
-          class: "text-xl w-36 py-4 text-center text-white bg-[#27acd9] border-0 border-b-8 border-[#0686b2] rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
+          class: "text-xl w-36 py-4 text-center text-white bg-[#27acd9] border-0 border-b-8 border-[#0686b2] rounded-full
+                  cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
         <%= link_to "削除する", post_path(@post), data: { turbo_method: :delete, turbo_confirm: "削除しますか？"},
-          class: "text-xl w-36 py-4 text-center text-white bg-[#d94227] border-0 border-b-8 border-[#b20606] rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
-        </div></div><p class="text-center text-gray-400 pt-28 hover:underline ">
-        <a href="#" onclick="history.go(-2); return false;">一覧画面に戻る</a></p></div>
-      <% else %>
-      <div class="text-xl absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
-        <%= f.submit '投稿',
-          class: "w-36 py-4 text-center text-white bg-[#27acd9] border-0 border-b-8 border-[#0686b2] rounded-full cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
+          class: "text-xl w-36 py-4 text-center text-white bg-[#d94227] border-0 border-b-8 border-[#b20606] rounded-full
+                  cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
       </div>
+    </div>
+    <% else %>
+      <div class="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2 flex justify-center space-x-4">
+        <%= f.submit '投稿',
+        class: "text-xl w-36 py-4 text-center text-white bg-[#27acd9] border-0 border-b-8 border-[#0686b2] rounded-full
+                cursor-pointer outline-none hover:mt-1 hover:border-b-2 transition-all ease-in-out duration-300" %>
+      </div>
+    </div>
     <% end %>
+  <% end %>
+  <div class="text-center text-gray-400 pt-28 hover:underline ">
+    <a href="#" onclick="history.go(-2); return false;">一覧画面に戻る</a>
   </div>
-<% end %>
+</div>

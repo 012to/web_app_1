@@ -474,6 +474,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  mini_magick
   mini_racer
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
