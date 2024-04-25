@@ -38,7 +38,11 @@ class Post < ApplicationRecord
 
   def self.recommended_for(user)
     favorite_tags = user.favorite_tags
-    Post.joins(:tags).where(tags: { tag_name: favorite_tags }).where.not(id: user.likes_posts.select(:id)).distinct.limit(3)
+    Post.joins(:tags)
+        .where(tags: { tag_name: favorite_tags })
+        .where.not(user_id: user.id)
+        .where.not(id: user.likes_posts.select(:id))
+        .distinct.limit(3)
   end
 
   private

@@ -1,22 +1,44 @@
+User.destroy_all
+Post.destroy_all
+Tag.destroy_all
 
-User.create([
-  { name: 'ユーザー1', email: 'user1@example.com', encrypted_password: 'password1' },
-  { name: 'ユーザー2', email: 'user2@example.com', encrypted_password: 'password2' },
-  { name: 'ユーザー3', email: 'user3@example.com', encrypted_password: 'password3' }
+users = User.create([
+  { name: "ユーザー１", email: "user1@example.com", password: "password123", password_confirmation: "password123" },
+  { name: "ユーザー２", email: "user2@example.com", password: "password123", password_confirmation: "password123" },
+  { name: "ユーザー３", email: "carol@example.com", password: "password123", password_confirmation: "password123" }
+
 ])
 
-Post.create([
-  { title: 'タイトル1', content: '内容１' },
-  { title: 'タイトル2', content: '内容2' },
-  { title: 'タイトル3', content: '内容3' },
-  { title: 'タイトル4', content: '内容4' },
-  { title: 'タイトル5', content: '内容5' }
+tags = Tag.create!([
+  { tag_name: "りんご" },
+  { tag_name: "みかん" },
+  { tag_name: "キウイ" },
+  { tag_name: "ぶどう" },
+  { tag_name: "バナナ" }
 ])
 
-Tag.create([
-  { name: 'タグ1' },
-  { name: 'タグ2' },
-  { name: 'タグ3' },
-  { name: 'タグ4' },
-  { name: 'タグ5' }
+posts = Post.create!([
+  { title: "りんご みかん", user: users[0], tags: [tags[0], tags[1]] },
+  { title: "みかん キウイ", user: users[1], tags: [tags[1], tags[2]] },
+  { title: "キウイ ぶどう", user: users[2], tags: [tags[2], tags[3]] },
+  { title: "ぶどう", user: users[0], tags: [tags[3]] },
+  { title: "バナナ", user: users[1], tags: [tags[4]] }
 ])
+
+PostTag.create([
+  { post: posts[0], tag: tags[0] },
+  { post: posts[0], tag: tags[1] },
+  { post: posts[1], tag: tags[2] }
+])
+
+Like.create!([
+  { user: users[0], post: posts[1] }, # Alice likes "Advanced JavaScript"
+  { user: users[0], post: posts[3] }, # Alice likes "Java in Depth"
+  { user: users[1], post: posts[0] }, # Bob likes "Ruby Tips"
+  { user: users[2], post: posts[2] } # Carol likes "Python for Data Science"
+])
+
+like_posts_by_tags = posts.first.tags.map do |tag|
+  Post.joins(:tags).where(tags: { id: tag.id }).first
+end
+Like.create(like_posts_by_tags.map { |post| { user: users.last, post: post } })

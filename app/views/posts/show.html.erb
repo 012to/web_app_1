@@ -53,4 +53,6 @@
   <% end %>
   </div>
 
-<p class="pt-4 text-center text-gray-400 hover:underline "><a href="#" onclick="history.go(-1); return false;">前の画面に戻る</a></p>
+<p class="pt-4 text-center text-gray-400 hover:underline">
+  <a href="#" data-controller="back" data-action="click->back#goBack">前の画面に戻る</a>
+</p>

@@ -78,7 +78,11 @@ class User < ApplicationRecord
   end
 
   def favorite_tags
-    tags = posts.joins(:tags).where(id: likes_posts.select(:id)).group('tags.id').order('COUNT(tags.id) DESC').limit(3).pluck(:tag_name)
+    tags = posts.joins(:tags)
+                .where(id: likes_posts.select(:id))
+                .group('tags.id').order('COUNT(tags.id) DESC')
+                .limit(3)
+                .pluck(:tag_name)
     tags.any? ? tags : Tag.most_used.limit(3).pluck(:tag_name)
   end
 
