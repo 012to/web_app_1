@@ -77,6 +77,11 @@ class User < ApplicationRecord
     likes_posts.include?(post)
   end
 
+  def favorite_tags
+    tags = posts.joins(:tags).where(id: likes_posts.select(:id)).group('tags.id').order('COUNT(tags.id) DESC').limit(3).pluck(:tag_name)
+    tags.any? ? tags : Tag.most_used.limit(3).pluck(:tag_name)
+  end
+
   private
 
   def send_notification_email_if_enabled

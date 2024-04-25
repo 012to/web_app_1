@@ -10,4 +10,11 @@ class Tag < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["tag_name"]
   end
+
+  def self.most_used
+    Tag.joins(:post_tags)
+       .select('tags.*, COUNT(post_tags.tag_id) AS tags_count')
+       .group('tags.id')
+       .order('COUNT(post_tags.tag_id) DESC')
+  end
 end

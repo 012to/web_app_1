@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     .order('posts_count DESC')
     .limit(5)
 
+    @recommended_posts = current_user ? Post.recommended_for(current_user) : Post.most_liked
+
     if params[:q].blank?
       @posts = Post.includes(:tags).order('RANDOM()')
     else

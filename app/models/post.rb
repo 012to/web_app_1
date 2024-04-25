@@ -36,6 +36,11 @@ class Post < ApplicationRecord
     end
   end
 
+  def self.recommended_for(user)
+    favorite_tags = user.favorite_tags
+    Post.joins(:tags).where(tags: { tag_name: favorite_tags }).where.not(id: user.likes_posts.select(:id)).distinct.limit(3)
+  end
+
   private
 
   def validate_image_size
