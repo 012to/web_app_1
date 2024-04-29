@@ -53,3 +53,16 @@
   }
 }
 }
+
+@keyframes textFade {
+  0%, 100% {
+    color: #1D4ED8;
+  }
+  50% {
+    color: #f35da8;
+  }
+}
+
+.fade-text-animation {
+  animation: textFade 3s ease-in-out infinite;
+}
