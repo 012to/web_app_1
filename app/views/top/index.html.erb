@@ -32,18 +32,24 @@
         </div>
         <div class=" text-[#ddf5fa]  ">
           仲間たちと言葉やアイデアなどをシェアして<br>ポジティブなエネルギーをもらおう！
-
         </div>
-        <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center mt-8 ">
-          <a href="/roulette" class="inline-block px-8 py-4 text-xl font-semibold text-white bg-indigo-600 rounded-lg hover:animate-jello-horizontal ">
+
+      <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center mt-8 ">
+        <div data-controller="loading">
+          <div data-loading-target="loader" class="z-40 fixed inset-0 bg-[#FAFAFA] flex flex-col justify-center items-center">
+            <div class="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500 border-b-4"></div>
+            <div class="font-biz-udpmincho-regular mt-4 text-4xl font-bold text-cyan-600 fade-text-animation">モチベの泉</div><!-- Tailwindでスタイル適用 -->
+          </div>
+          <a href="/roulette" data-action="click->loading#transition" class="inline-block px-8 py-4 text-xl font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700">
             ルーレット</a>
+        </div>
           <a href="/posts" class="inline-block px-8 py-4 text-xl font-semibold text-gray-500 bg-gray-200 rounded-lg hover:bg-gray-300">
             投稿一覧</a>
         </div>
       </div>
     </section>
 
-  <div class="flex justify-center gap-4 pb-4 mt-4">
+  <div class="flex justify-center gap-4 pb-4 mt-4 z-10">
     <a href="https://twitter.com/intent/tweet?text=アプリをチェック！&hashtags=モチベの泉&url=https://mochibe.com/" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-gray-800">
       <div class="icon-wrapper relative bg-white rounded-lg w-10 h-10 flex items-center justify-center">
         <i class="fa-brands fa-square-x-twitter fa-3x absolute"></i>
@@ -64,4 +70,3 @@
     </div>
   </div>
 </div>
-
