@@ -70,18 +70,20 @@ https://www.figma.com/file/4GXJTlkz2Htgkx93LCApyi/%5B%E6%8F%90%E5%87%BA%E7%94%A8
 - ER図(仮定)
 https://i.gyazo.com/db54561b6bf667e5e68e3b2e9be5c4c3.png
 
-- ER図(リリース後)
-https://gyazo.com/58d5084a3e0a61ba43be1f331575395d
+----
 
-- 使用技術
-■ サーバサイド: Ruby on Rails 7系
-　　Ruby 3.2.2 Rails 7.0.4.3
-■ フロントエンド: HotWire(Turbo, Stimulus)
-■ CSSフレームワーク: TailwindCSS
-■ インフラ:
-・ Webアプリケーションサーバ: Fly.io
-・ ファイルサーバ: AWS S3
-・ データベースサーバ: PostgreSQL（Fly Postgres）
-・ バックグラウンドジョブの管理: Redis
-■ その他：
-・ VCS: GitHub
+### ●リリース後
+【ER図】
+https://i.gyazo.com/58d5084a3e0a61ba43be1f331575395d.png
+
+【使用技術】
+
+- サーバサイド: Ruby on Rails 7系(Ruby 3.2.2 Rails 7.0.4.3)
+- フロントエンド: HotWire(Turbo, Stimulus)
+- CSSフレームワーク: TailwindCSS
+- インフラ:
+  - Webアプリケーションサーバ: Fly.io
+  - ファイルサーバ: AWS S3
+  - データベースサーバ: PostgreSQL（Fly Postgres）
+  - バックグラウンドジョブの管理: Redis
+- その他：VCS: GitHub
