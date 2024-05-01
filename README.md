@@ -67,5 +67,21 @@
 - 画面遷移図(Figma)
 https://www.figma.com/file/4GXJTlkz2Htgkx93LCApyi/%5B%E6%8F%90%E5%87%BA%E7%94%A8%5D-%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=R6rA83kVpSEvvDvd-1
 
-- ER図
+- ER図(仮定)
 https://i.gyazo.com/db54561b6bf667e5e68e3b2e9be5c4c3.png
+
+- ER図(リリース後)
+https://gyazo.com/58d5084a3e0a61ba43be1f331575395d
+
+- 使用技術
+■ サーバサイド: Ruby on Rails 7系
+　　Ruby 3.2.2 Rails 7.0.4.3
+■ フロントエンド: HotWire(Turbo, Stimulus)
+■ CSSフレームワーク: TailwindCSS
+■ インフラ:
+・ Webアプリケーションサーバ: Fly.io
+・ ファイルサーバ: AWS S3
+・ データベースサーバ: PostgreSQL（Fly Postgres）
+・ バックグラウンドジョブの管理: Redis
+■ その他：
+・ VCS: GitHub
