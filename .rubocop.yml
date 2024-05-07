@@ -9,6 +9,7 @@ AllCops:
     - 'app/jobs/send_inactive_notification_job.rb'
     - 'app/controllers/application_controller.rb'
     - 'app/controllers/posts_controller.rb'
+    - 'app/helpers/notification_helper.rb'
     - 'vendor/**/*'
     - 'db/**/*'
     - 'config/**/*'
@@ -17,16 +18,10 @@ AllCops:
     - 'app/uploaders/**/*'
     - 'node_modules/**/*'
   DisplayCopNames: true
-
-Layout/MultilineBlockLayout:
-  Exclude:
-    - 'spec/**/*_spec.rb'
-
-Layout/LineLength:
-  Enabled: false
+  SuggestExtensions: false
 
 Metrics/AbcSize:
-  Max: 25
+  Enabled: false
 
 Metrics/BlockLength:
   Max: 30
@@ -46,9 +41,11 @@ Metrics/MethodLength:
   CountComments: false
   Max: 30
 
-Naming/AccessorMethodName:
-  Exclude:
-    - 'app/controllers/**/*'
+Style/StringLiterals:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
 
 Style/AsciiComments:
   Enabled: false
@@ -85,4 +82,7 @@ Bundler/OrderedGems:
   Enabled: false
 
 Rails/I18nLocaleTexts:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
   Enabled: false

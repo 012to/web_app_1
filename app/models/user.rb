@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :sns_credential, dependent: :destroy
   validates :name, presence: true, length: { maximum: 10 }
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
-          :omniauthable, omniauth_providers: %i[twitter google_oauth2]
+         :omniauthable, omniauth_providers: %i[twitter google_oauth2]
 
   class << self
     def without_sns_data(auth)

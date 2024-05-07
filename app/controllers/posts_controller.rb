@@ -5,10 +5,10 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
 
     @top_tags = Tag.joins(:posts)
-    .select('tags.*, COUNT(posts.id) as posts_count')
-    .group('tags.id')
-    .order('posts_count DESC')
-    .limit(5)
+                   .select('tags.*, COUNT(posts.id) as posts_count')
+                   .group('tags.id')
+                   .order('posts_count DESC')
+                   .limit(5)
 
     @recommended_posts = current_user ? Post.recommended_for(current_user) : Post.most_used
 
@@ -30,7 +30,6 @@ class PostsController < ApplicationController
       format.js
     end
   end
-
 
   def show
     @post = Post.includes(:user).find(params[:id])

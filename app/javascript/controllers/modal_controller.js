@@ -20,4 +20,3 @@ export default class extends Controller {
     return this.modalTarget.querySelector('.modal-content');
   }
 }
-

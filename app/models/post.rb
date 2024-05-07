@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   validate :validate_image_size
 
   def self.ransackable_attributes(auth_object = nil)
-    ["title", "content"]
+    %w[title content]
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -48,8 +48,8 @@ class Post < ApplicationRecord
   private
 
   def validate_image_size
-    if post_image.size > 0.5.megabytes
-      errors.add(:post_image, I18n.t('errors.messages.max_size_error', max_size: '500KB'))
-    end
+    return unless post_image.size > 0.5.megabytes
+
+    errors.add(:post_image, I18n.t('errors.messages.max_size_error', max_size: '500KB'))
   end
 end

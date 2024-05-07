@@ -7,4 +7,3 @@ export default class extends Controller {
     this.outputTarget.textContent = "テキストが変更されました！"
   }
 }
-
