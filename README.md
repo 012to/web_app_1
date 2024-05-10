@@ -109,7 +109,7 @@ https://mochibe.com/
     </tr>
 </table>
 
-### ●機能まとめ
+### 機能まとめ
 - ユーザー登録・ログイン機能
 - SNSアカウント認証機能
 - ルーレット機能
@@ -127,21 +127,49 @@ https://mochibe.com/
 ## ER図
 <a href="https://gyazo.com/93ca5fcb3a9fa408c93420a029c13863"><img src="https://i.gyazo.com/93ca5fcb3a9fa408c93420a029c13863.png" alt="Image from Gyazo" width="1656"/></a>
 
-## インフラ構成図
-
-
-
 ## 技術スタック
-
-- サーバサイド: Ruby on Rails 7系(Ruby 3.2.2 Rails 7.0.4.3)
-- フロントエンド: HotWire(Turbo, Stimulus)
-- CSSフレームワーク: TailwindCSS
-- インフラ:
-  - Webアプリケーションサーバ: Fly.io
-  - ファイルサーバ: AWS S3
-  - データベースサーバ: PostgreSQL（Fly Postgres）
-  - バックグラウンドジョブの管理: Redis
-- その他：VCS: GitHub
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>技術スタック</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サーバサイド</td>
+      <td>Ruby on Rails 7系 (Ruby 3.2.2, Rails 7.0.4.3)</td>
+    </tr>
+    <tr>
+      <td>フロントエンド</td>
+      <td>HotWire (Turbo, Stimulus)</td>
+    </tr>
+    <tr>
+      <td>CSSフレームワーク</td>
+      <td>TailwindCSS</td>
+    </tr>
+    <tr>
+      <td>Webアプリケーションサーバ</td>
+      <td>Fly.io</td>
+    </tr>
+    <tr>
+      <td>ファイルサーバ</td>
+      <td>AWS S3</td>
+    </tr>
+    <tr>
+      <td>データベースサーバ</td>
+      <td>PostgreSQL (Fly Postgres)</td>
+    </tr>
+    <tr>
+      <td>バックグラウンドジョブの管理</td>
+      <td>Redis</td>
+    </tr>
+    <tr>
+      <td>その他</td>
+      <td>VCS: GitHub</td>
+    </tr>
+  </tbody>
+</table>
 
 ----
 
