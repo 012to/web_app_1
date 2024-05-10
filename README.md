@@ -127,7 +127,7 @@ https://mochibe.com/
 ## ER図
 <a href="https://gyazo.com/93ca5fcb3a9fa408c93420a029c13863"><img src="https://i.gyazo.com/93ca5fcb3a9fa408c93420a029c13863.png" alt="Image from Gyazo" width="1656"/></a>
 
-## 技術スタック
+## 主な技術
 <table>
   <thead>
     <tr>
